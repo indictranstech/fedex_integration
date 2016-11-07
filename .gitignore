@@ -1,0 +1,6 @@
+.DS_Store
+*.pyc
+*.egg-info
+*.swp
+tags
+fedex_integration/docs/current
