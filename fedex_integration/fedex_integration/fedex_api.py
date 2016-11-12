@@ -12,49 +12,67 @@ from fedex.services.track_service import FedexTrackRequest
 from fedex_controller import FedexController
 
 
-def get_fedex_account_details():
-	return frappe.db.get_singles_dict("Fedex Settings")
 
+uom_mapper = {"Kg":"KG", "LB":"LB"}
 
 def init_fedex_shipment(doc, method):
-	fedex = FedexController()
-	shipment  = fedex.make_shipment(doc)
-	shipment.send_validation_request()
-	frappe.errprint(shipment.RequestedShipment)
-	print "shipement response_____________________", shipment.response.HighestSeverity
-	jkjkjjjjkj
-	# Fires off the request, sets the 'response' attribute on the object.
-	shipment.send_request()
+	packing_slips = frappe.get_all("Packing Slip", fields=["*"], filters={"delivery_note":doc.name, "docstatus":0}, 
+					order_by="creation asc")
+	pkg_count = len(packing_slips)
+	if pkg_count:
+		try:
+			fedex = FedexController()
+			shipment  = fedex.init_shipment(doc, packing_slips, pkg_count)
+			fedex.set_package_data(packing_slips[0], shipment, 1)
+			shipment.RequestedShipment.TotalWeight.Units = uom_mapper.get(packing_slips[0].get("gross_weight_uom"))
+			shipment.RequestedShipment.TotalWeight.Value = sum(flt(ps.get("gross_weight_pkg")) for ps in packing_slips)
+			shipment.send_validation_request()
+			shipment.send_request()
+			doc.fedex_tracking_id = shipment.response.CompletedShipmentDetail.CompletedPackageDetails[0].TrackingIds[0].TrackingNumber
+			FedexController.validate_fedex_shipping_response(shipment, packing_slips[0].get("name"))
+			fedex.store_label(shipment, doc.fedex_tracking_id, packing_slips[0].get("name"))
+		except Exception as e:
+			FedexController.delete_shipment(doc.fedex_tracking_id) if doc.fedex_tracking_id else ""
+			frappe.throw('Fedex API: ' + cstr(e))
 
-	print "HighestSeverity: {}".format(shipment.response.HighestSeverity)
+		update_packing_slip(cstr(shipment.response), doc.fedex_tracking_id, packing_slips[0].get("name"))
+		try:
+			if pkg_count > 1:
+				shipment.RequestedShipment.MasterTrackingId.TrackingNumber = doc.fedex_tracking_id
+				shipment.RequestedShipment.MasterTrackingId.TrackingIdType.value = 'EXPRESS'
+				for i, ps in enumerate(packing_slips[1:]):
+					fedex.set_package_data(ps, shipment, i + 2)
+					shipment.send_request()
+					FedexController.validate_fedex_shipping_response(shipment, ps.get("name"))
+					tracking_id = shipment.response.CompletedShipmentDetail.CompletedPackageDetails[0].TrackingIds[0].TrackingNumber
+					fedex.store_label(shipment, tracking_id, ps.get("name"))
+					update_packing_slip(cstr(shipment.response), tracking_id, ps.get("name"))
+		except Exception as e:
+			FedexController.delete_shipment(doc.fedex_tracking_id) if doc.fedex_tracking_id else ""
+			frappe.throw(cstr(e))
+		update_shipment_rate(shipment, doc)
 
-	# Getting the tracking number from the new shipment.
-	print "Master Tracking ID___________#: {}".format(shipment.response.CompletedShipmentDetail.MasterTrackingId.TrackingNumber)
 
-	print "Check Child tracking IDS________", shipment.response.CompletedShipmentDetail
-	doc.fedex_tracking_id = shipment.response.CompletedShipmentDetail.MasterTrackingId.TrackingNumber
-	
-	# # Net shipping costs.
-	amount = shipment.response.CompletedShipmentDetail.ShipmentRating.\
-									ShipmentRateDetails[0].TotalNetCharge.Amount
-	print "Net Shipping Cost (US$): {}".format(amount)
+def update_shipment_rate(shipment, doc):
+	try:
+		for shipment_rate_detail in shipment.response.CompletedShipmentDetail.ShipmentRating.ShipmentRateDetails:
+			if shipment_rate_detail.RateType == shipment.response.CompletedShipmentDetail.ShipmentRating.ActualRateType:
+				doc.update({
+				    "shipment_amount": flt(shipment_rate_detail.TotalNetCharge.Amount),
+				    "shipment_currency": cstr(shipment_rate_detail.TotalNetCharge.Currency)
+				})
+				break
+	except Exception as ex:
+		frappe.msgprint('Cannot update Total Amounts: %s' % cstr(ex))
 
-	doc.shipment_amount = amount
 
-	
-	from fedex.tools.conversion import sobject_to_dict, sobject_to_json
-	response_dict = sobject_to_json(shipment.response)
-	file = open(r"normal_shipment", "w")
-	file.write(response_dict)
-	file.close()
-	# # # Get the label image in ASCII format from the reply. Note the list indices
-	# # we're using. You'll need to adjust or iterate through these if your shipment
-	# # has multiple packages.
 
-	ascii_label_data = shipment.response.CompletedShipmentDetail.ShipmentDocuments[0].Parts[0].Image
-	# doc.fedex_label_data = ascii_label_data
-	label_binary_data = binascii.a2b_base64(ascii_label_data)
-	save_file('FedxTrackID{0}.pdf'.format(doc.fedex_tracking_id), label_binary_data, doc.doctype, doc.name)
+def update_packing_slip(shipment_response, tracking_id, ps_name):
+	frappe.db.sql(""" update `tabPacking Slip`
+						set shipment_response = %s, fedex_tracking_id = %s 
+						where name = %s """,(shipment_response, tracking_id, ps_name))
+	frappe.db.commit()
+
 
 
 def track_shipment():

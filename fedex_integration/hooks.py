@@ -71,8 +71,11 @@ app_license = "MIT"
 # Hook on document methods and events
 
 doc_events = {
-	"Delivery Note": {
-		"before_submit": "fedex_integration.fedex_integration.fedex_api.init_fedex_shipment"
+	"Packing Slip":{
+		"validate":["fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.validate_for_package_count",
+					"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.validate_package_details",
+					"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.update_package_details"],
+		"before_submit": ["fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.init_fedex_shipment"]
 	}
 }
 
