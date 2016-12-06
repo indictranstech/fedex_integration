@@ -1,0 +1,2502 @@
+[
+ {
+  "code": null, 
+  "country_name": "USA", 
+  "date_format": null, 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.180973", 
+  "name": "USA", 
+  "time_zones": null
+ }, 
+ {
+  "code": "US", 
+  "country_name": "United States", 
+  "date_format": "mm-dd-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.001453", 
+  "name": "United States", 
+  "time_zones": "America/Adak\nAmerica/Anchorage\nAmerica/Boise\nAmerica/Chicago\nAmerica/Denver\nAmerica/Detroit\nAmerica/Indiana/Indianapolis\nAmerica/Indiana/Knox\nAmerica/Indiana/Marengo\nAmerica/Indiana/Petersburg\nAmerica/Indiana/Tell_City\nAmerica/Indiana/Vevay\nAmerica/Indiana/Vincennes\nAmerica/Indiana/Winamac\nAmerica/Juneau\nAmerica/Kentucky/Louisville\nAmerica/Kentucky/Monticello\nAmerica/Los_Angeles\nAmerica/Menominee\nAmerica/Metlakatla\nAmerica/New_York\nAmerica/Nome\nAmerica/North_Dakota/Beulah\nAmerica/North_Dakota/Center\nAmerica/North_Dakota/New_Salem\nAmerica/Phoenix\nAmerica/Denver\nAmerica/Sitka\nAmerica/Yakutat\nPacific/Honolulu"
+ }, 
+ {
+  "code": "IN", 
+  "country_name": "India", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.382582", 
+  "name": "India", 
+  "time_zones": "Asia/Kolkata"
+ }, 
+ {
+  "code": "AL", 
+  "country_name": "Albania", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:48.272281", 
+  "name": "Albania", 
+  "time_zones": "Europe/Tirane"
+ }, 
+ {
+  "code": "DZ", 
+  "country_name": "Algeria", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:48.296723", 
+  "name": "Algeria", 
+  "time_zones": "Africa/Algiers"
+ }, 
+ {
+  "code": "AD", 
+  "country_name": "Andorra", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:48.303827", 
+  "name": "Andorra", 
+  "time_zones": "Europe/Andorra"
+ }, 
+ {
+  "code": "af", 
+  "country_name": "Afghanistan", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:47.794009", 
+  "name": "Afghanistan", 
+  "time_zones": "Asia/Kabul"
+ }, 
+ {
+  "code": "ax", 
+  "country_name": "\u00c5land Islands", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:48.254376", 
+  "name": "\u00c5land Islands", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "as", 
+  "country_name": "American Samoa", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:48.300320", 
+  "name": "American Samoa", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "AO", 
+  "country_name": "Angola", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.233476", 
+  "name": "Angola", 
+  "time_zones": "Africa/Luanda"
+ }, 
+ {
+  "code": "AI", 
+  "country_name": "Anguilla", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.257963", 
+  "name": "Anguilla", 
+  "time_zones": "America/Anguilla"
+ }, 
+ {
+  "code": "aq", 
+  "country_name": "Antarctica", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.261037", 
+  "name": "Antarctica", 
+  "time_zones": "Antarctica/Casey\nAntarctica/Davis\nAntarctica/DumontDUrville\nAntarctica/Macquarie\nAntarctica/Mawson\nAntarctica/McMurdo\nAntarctica/Palmer\nAntarctica/Rothera\nAntarctica/Syowa\nAntarctica/Vostok"
+ }, 
+ {
+  "code": "ag", 
+  "country_name": "Antigua and Barbuda", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.310092", 
+  "name": "Antigua and Barbuda", 
+  "time_zones": "America/Antigua"
+ }, 
+ {
+  "code": "AR", 
+  "country_name": "Argentina", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.313385", 
+  "name": "Argentina", 
+  "time_zones": "America/Argentina/Buenos_Aires\nAmerica/Argentina/Catamarca\nAmerica/Argentina/Cordoba\nAmerica/Argentina/Jujuy\nAmerica/Argentina/La_Rioja\nAmerica/Argentina/Mendoza\nAmerica/Argentina/Rio_Gallegos\nAmerica/Argentina/Salta\nAmerica/Argentina/San_Juan\nAmerica/Argentina/San_Luis\nAmerica/Argentina/Tucuman\nAmerica/Argentina/Ushuaia"
+ }, 
+ {
+  "code": "AM", 
+  "country_name": "Armenia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.316511", 
+  "name": "Armenia", 
+  "time_zones": "Asia/Yerevan"
+ }, 
+ {
+  "code": "AW", 
+  "country_name": "Aruba", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.322446", 
+  "name": "Aruba", 
+  "time_zones": "America/Aruba"
+ }, 
+ {
+  "code": "AU", 
+  "country_name": "Australia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.356707", 
+  "name": "Australia", 
+  "time_zones": "Australia/Adelaide\nAustralia/Brisbane\nAustralia/Broken_Hill\nAustralia/Currie\nAustralia/Darwin\nAustralia/Eucla\nAustralia/Hobart\nAustralia/Lindeman\nAustralia/Lord_Howe\nAustralia/Melbourne\nAustralia/Perth\nAustralia/Sydney"
+ }, 
+ {
+  "code": "AT", 
+  "country_name": "Austria", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.360054", 
+  "name": "Austria", 
+  "time_zones": "Europe/Vienna"
+ }, 
+ {
+  "code": "AZ", 
+  "country_name": "Azerbaijan", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.397694", 
+  "name": "Azerbaijan", 
+  "time_zones": "Asia/Baku"
+ }, 
+ {
+  "code": "BS", 
+  "country_name": "Bahamas", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.401377", 
+  "name": "Bahamas", 
+  "time_zones": "America/Nassau"
+ }, 
+ {
+  "code": "BH", 
+  "country_name": "Bahrain", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.404925", 
+  "name": "Bahrain", 
+  "time_zones": "Asia/Bahrain"
+ }, 
+ {
+  "code": "BD", 
+  "country_name": "Bangladesh", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.429881", 
+  "name": "Bangladesh", 
+  "time_zones": "Asia/Dhaka"
+ }, 
+ {
+  "code": "BB", 
+  "country_name": "Barbados", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.448120", 
+  "name": "Barbados", 
+  "time_zones": "America/Barbados"
+ }, 
+ {
+  "code": "BY", 
+  "country_name": "Belarus", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.460622", 
+  "name": "Belarus", 
+  "time_zones": "Europe/Minsk"
+ }, 
+ {
+  "code": "BE", 
+  "country_name": "Belgium", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.472062", 
+  "name": "Belgium", 
+  "time_zones": "Europe/Brussels"
+ }, 
+ {
+  "code": "BZ", 
+  "country_name": "Belize", 
+  "date_format": "mm-dd-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.475103", 
+  "name": "Belize", 
+  "time_zones": "America/Belize"
+ }, 
+ {
+  "code": "BJ", 
+  "country_name": "Benin", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.494621", 
+  "name": "Benin", 
+  "time_zones": "Africa/Porto-Novo"
+ }, 
+ {
+  "code": "BM", 
+  "country_name": "Bermuda", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.509912", 
+  "name": "Bermuda", 
+  "time_zones": "Atlantic/Bermuda"
+ }, 
+ {
+  "code": "BT", 
+  "country_name": "Bhutan", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.512952", 
+  "name": "Bhutan", 
+  "time_zones": "Asia/Thimphu"
+ }, 
+ {
+  "code": "BO", 
+  "country_name": "Bolivia, Plurinational State of", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.531037", 
+  "name": "Bolivia, Plurinational State of", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "bq", 
+  "country_name": "Bonaire, Sint Eustatius and Saba", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.539363", 
+  "name": "Bonaire, Sint Eustatius and Saba", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "ba", 
+  "country_name": "Bosnia and Herzegovina", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.570262", 
+  "name": "Bosnia and Herzegovina", 
+  "time_zones": "Europe/Sarajevo"
+ }, 
+ {
+  "code": "BW", 
+  "country_name": "Botswana", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.573283", 
+  "name": "Botswana", 
+  "time_zones": "Africa/Gaborone"
+ }, 
+ {
+  "code": "bv", 
+  "country_name": "Bouvet Island", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.601864", 
+  "name": "Bouvet Island", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "BR", 
+  "country_name": "Brazil", 
+  "date_format": "dd/mm/yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.642711", 
+  "name": "Brazil", 
+  "time_zones": "America/Araguaina\nAmerica/Bahia\nAmerica/Belem\nAmerica/Boa_Vista\nAmerica/Campo_Grande\nAmerica/Cuiaba\nAmerica/Eirunepe\nAmerica/Fortaleza\nAmerica/Maceio\nAmerica/Manaus\nAmerica/Noronha\nAmerica/Porto_Velho\nAmerica/Recife\nAmerica/Rio_Branco\nAmerica/Santarem\nAmerica/Sao_Paulo"
+ }, 
+ {
+  "code": "io", 
+  "country_name": "British Indian Ocean Territory", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.651547", 
+  "name": "British Indian Ocean Territory", 
+  "time_zones": "Indian/Chagos"
+ }, 
+ {
+  "code": "BN", 
+  "country_name": "Brunei Darussalam", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.654673", 
+  "name": "Brunei Darussalam", 
+  "time_zones": "Asia/Brunei"
+ }, 
+ {
+  "code": "BG", 
+  "country_name": "Bulgaria", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.657780", 
+  "name": "Bulgaria", 
+  "time_zones": "Europe/Sofia"
+ }, 
+ {
+  "code": "BF", 
+  "country_name": "Burkina Faso", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.666486", 
+  "name": "Burkina Faso", 
+  "time_zones": "Africa/Ouagadougou"
+ }, 
+ {
+  "code": "BI", 
+  "country_name": "Burundi", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.676763", 
+  "name": "Burundi", 
+  "time_zones": "Africa/Bujumbura"
+ }, 
+ {
+  "code": "KH", 
+  "country_name": "Cambodia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.680876", 
+  "name": "Cambodia", 
+  "time_zones": "Asia/Phnom_Penh"
+ }, 
+ {
+  "code": "CM", 
+  "country_name": "Cameroon", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.715849", 
+  "name": "Cameroon", 
+  "time_zones": "Africa/Douala"
+ }, 
+ {
+  "code": "CA", 
+  "country_name": "Canada", 
+  "date_format": "mm-dd-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.719754", 
+  "name": "Canada", 
+  "time_zones": "America/Atikokan\nAmerica/Blanc-Sablon\nAmerica/Cambridge_Bay\nAmerica/Creston\nAmerica/Dawson\nAmerica/Dawson_Creek\nAmerica/Edmonton\nAmerica/Glace_Bay\nAmerica/Goose_Bay\nAmerica/Halifax\nAmerica/Inuvik\nAmerica/Iqaluit\nAmerica/Moncton\nAmerica/Montreal\nAmerica/Nipigon\nAmerica/Pangnirtung\nAmerica/Rainy_River\nAmerica/Rankin_Inlet\nAmerica/Regina\nAmerica/Resolute\nAmerica/St_Johns\nAmerica/Swift_Current\nAmerica/Thunder_Bay\nAmerica/Toronto\nAmerica/Vancouver\nAmerica/Whitehorse\nAmerica/Winnipeg\nAmerica/Yellowknife"
+ }, 
+ {
+  "code": "CV", 
+  "country_name": "Cape Verde", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.736482", 
+  "name": "Cape Verde", 
+  "time_zones": "Atlantic/Cape_Verde"
+ }, 
+ {
+  "code": "KY", 
+  "country_name": "Cayman Islands", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.756474", 
+  "name": "Cayman Islands", 
+  "time_zones": "America/Cayman"
+ }, 
+ {
+  "code": "CF", 
+  "country_name": "Central African Republic", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.761375", 
+  "name": "Central African Republic", 
+  "time_zones": "Africa/Bangui"
+ }, 
+ {
+  "code": "TD", 
+  "country_name": "Chad", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.764329", 
+  "name": "Chad", 
+  "time_zones": "Africa/Ndjamena"
+ }, 
+ {
+  "code": "CL", 
+  "country_name": "Chile", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.792410", 
+  "name": "Chile", 
+  "time_zones": "America/Santiago\nPacific/Easter"
+ }, 
+ {
+  "code": "CN", 
+  "country_name": "China", 
+  "date_format": "yyyy-mm-dd", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.795390", 
+  "name": "China", 
+  "time_zones": "Asia/Chongqing\nAsia/Harbin\nAsia/Kashgar\nAsia/Shanghai\nAsia/Urumqi"
+ }, 
+ {
+  "code": "cx", 
+  "country_name": "Christmas Island", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.814611", 
+  "name": "Christmas Island", 
+  "time_zones": "Indian/Christmas"
+ }, 
+ {
+  "code": "cc", 
+  "country_name": "Cocos (Keeling) Islands", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.818010", 
+  "name": "Cocos (Keeling) Islands", 
+  "time_zones": "Indian/Cocos"
+ }, 
+ {
+  "code": "CO", 
+  "country_name": "Colombia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.821303", 
+  "name": "Colombia", 
+  "time_zones": "America/Bogota"
+ }, 
+ {
+  "code": "km", 
+  "country_name": "Comoros", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.824629", 
+  "name": "Comoros", 
+  "time_zones": "Indian/Comoro"
+ }, 
+ {
+  "code": "CG", 
+  "country_name": "Congo", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.828738", 
+  "name": "Congo", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "CD", 
+  "country_name": "Congo, The Democratic Republic of the", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.831915", 
+  "name": "Congo, The Democratic Republic of the", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "CK", 
+  "country_name": "Cook Islands", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.835179", 
+  "name": "Cook Islands", 
+  "time_zones": "Pacific/Rarotonga"
+ }, 
+ {
+  "code": "CR", 
+  "country_name": "Costa Rica", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:49.838145", 
+  "name": "Costa Rica", 
+  "time_zones": "America/Costa_Rica"
+ }, 
+ {
+  "code": "HR", 
+  "country_name": "Croatia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.287305", 
+  "name": "Croatia", 
+  "time_zones": "Europe/Zagreb"
+ }, 
+ {
+  "code": "cu", 
+  "country_name": "Cuba", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.291421", 
+  "name": "Cuba", 
+  "time_zones": "America/Havana"
+ }, 
+ {
+  "code": "cw", 
+  "country_name": "Cura\u00e7ao", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.316219", 
+  "name": "Cura\u00e7ao", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "CY", 
+  "country_name": "Cyprus", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.335695", 
+  "name": "Cyprus", 
+  "time_zones": "Asia/Nicosia"
+ }, 
+ {
+  "code": "CZ", 
+  "country_name": "Czech Republic", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.364809", 
+  "name": "Czech Republic", 
+  "time_zones": "Europe/Prague"
+ }, 
+ {
+  "code": "DK", 
+  "country_name": "Denmark", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.368011", 
+  "name": "Denmark", 
+  "time_zones": "Europe/Copenhagen"
+ }, 
+ {
+  "code": "DJ", 
+  "country_name": "Djibouti", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.391327", 
+  "name": "Djibouti", 
+  "time_zones": "Africa/Djibouti"
+ }, 
+ {
+  "code": "DM", 
+  "country_name": "Dominica", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.421569", 
+  "name": "Dominica", 
+  "time_zones": "America/Dominica"
+ }, 
+ {
+  "code": "DO", 
+  "country_name": "Dominican Republic", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.444572", 
+  "name": "Dominican Republic", 
+  "time_zones": "America/Santo_Domingo"
+ }, 
+ {
+  "code": "EC", 
+  "country_name": "Ecuador", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.448392", 
+  "name": "Ecuador", 
+  "time_zones": "America/Guayaquil\nPacific/Galapagos"
+ }, 
+ {
+  "code": "EG", 
+  "country_name": "Egypt", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.451325", 
+  "name": "Egypt", 
+  "time_zones": "Africa/Cairo"
+ }, 
+ {
+  "code": "SV", 
+  "country_name": "El Salvador", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.468868", 
+  "name": "El Salvador", 
+  "time_zones": "America/El_Salvador"
+ }, 
+ {
+  "code": "GQ", 
+  "country_name": "Equatorial Guinea", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.472007", 
+  "name": "Equatorial Guinea", 
+  "time_zones": "Africa/Malabo"
+ }, 
+ {
+  "code": "ER", 
+  "country_name": "Eritrea", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.474751", 
+  "name": "Eritrea", 
+  "time_zones": "Africa/Asmara"
+ }, 
+ {
+  "code": "EE", 
+  "country_name": "Estonia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.499326", 
+  "name": "Estonia", 
+  "time_zones": "Europe/Tallinn"
+ }, 
+ {
+  "code": "ET", 
+  "country_name": "Ethiopia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.502292", 
+  "name": "Ethiopia", 
+  "time_zones": "Africa/Addis_Ababa"
+ }, 
+ {
+  "code": "fk", 
+  "country_name": "Falkland Islands (Malvinas)", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.505325", 
+  "name": "Falkland Islands (Malvinas)", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "FO", 
+  "country_name": "Faroe Islands", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.511253", 
+  "name": "Faroe Islands", 
+  "time_zones": "Atlantic/Faroe"
+ }, 
+ {
+  "code": "FJ", 
+  "country_name": "Fiji", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.541621", 
+  "name": "Fiji", 
+  "time_zones": "Pacific/Fiji"
+ }, 
+ {
+  "code": "FI", 
+  "country_name": "Finland", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.544744", 
+  "name": "Finland", 
+  "time_zones": "Europe/Helsinki"
+ }, 
+ {
+  "code": "FR", 
+  "country_name": "France", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.548219", 
+  "name": "France", 
+  "time_zones": "Europe/Paris"
+ }, 
+ {
+  "code": "GF", 
+  "country_name": "French Guiana", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.612083", 
+  "name": "French Guiana", 
+  "time_zones": "America/Cayenne"
+ }, 
+ {
+  "code": "PF", 
+  "country_name": "French Polynesia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.615123", 
+  "name": "French Polynesia", 
+  "time_zones": "Pacific/Gambier\nPacific/Marquesas\nPacific/Tahiti"
+ }, 
+ {
+  "code": "tf", 
+  "country_name": "French Southern Territories", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.618053", 
+  "name": "French Southern Territories", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "GA", 
+  "country_name": "Gabon", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.660229", 
+  "name": "Gabon", 
+  "time_zones": "Africa/Libreville"
+ }, 
+ {
+  "code": "GM", 
+  "country_name": "Gambia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.670744", 
+  "name": "Gambia", 
+  "time_zones": "Africa/Banjul"
+ }, 
+ {
+  "code": "GE", 
+  "country_name": "Georgia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.673800", 
+  "name": "Georgia", 
+  "time_zones": "Asia/Tbilisi"
+ }, 
+ {
+  "code": "DE", 
+  "country_name": "Germany", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.718583", 
+  "name": "Germany", 
+  "time_zones": "Europe/Berlin"
+ }, 
+ {
+  "code": "GH", 
+  "country_name": "Ghana", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.723192", 
+  "name": "Ghana", 
+  "time_zones": "Africa/Accra"
+ }, 
+ {
+  "code": "GI", 
+  "country_name": "Gibraltar", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.737333", 
+  "name": "Gibraltar", 
+  "time_zones": "Europe/Gibraltar"
+ }, 
+ {
+  "code": "GR", 
+  "country_name": "Greece", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.756191", 
+  "name": "Greece", 
+  "time_zones": "Europe/Athens"
+ }, 
+ {
+  "code": "GL", 
+  "country_name": "Greenland", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.760489", 
+  "name": "Greenland", 
+  "time_zones": "America/Danmarkshavn\nAmerica/Godthab\nAmerica/Scoresbysund\nAmerica/Thule"
+ }, 
+ {
+  "code": "GD", 
+  "country_name": "Grenada", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.811998", 
+  "name": "Grenada", 
+  "time_zones": "America/Grenada"
+ }, 
+ {
+  "code": "GP", 
+  "country_name": "Guadeloupe", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:50.848222", 
+  "name": "Guadeloupe", 
+  "time_zones": "America/Guadeloupe"
+ }, 
+ {
+  "code": "GU", 
+  "country_name": "Guam", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.021637", 
+  "name": "Guam", 
+  "time_zones": "Pacific/Guam"
+ }, 
+ {
+  "code": "GT", 
+  "country_name": "Guatemala", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.060867", 
+  "name": "Guatemala", 
+  "time_zones": "America/Guatemala"
+ }, 
+ {
+  "code": "gg", 
+  "country_name": "Guernsey", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.070346", 
+  "name": "Guernsey", 
+  "time_zones": "Europe/London"
+ }, 
+ {
+  "code": "GN", 
+  "country_name": "Guinea", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.073073", 
+  "name": "Guinea", 
+  "time_zones": "Africa/Conakry"
+ }, 
+ {
+  "code": "GW", 
+  "country_name": "Guinea-Bissau", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.094628", 
+  "name": "Guinea-Bissau", 
+  "time_zones": "Africa/Bissau"
+ }, 
+ {
+  "code": "GY", 
+  "country_name": "Guyana", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.097444", 
+  "name": "Guyana", 
+  "time_zones": "America/Guyana"
+ }, 
+ {
+  "code": "HT", 
+  "country_name": "Haiti", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.100492", 
+  "name": "Haiti", 
+  "time_zones": "America/Guatemala\nAmerica/Port-au-Prince"
+ }, 
+ {
+  "code": "hm", 
+  "country_name": "Heard Island and McDonald Islands", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.141220", 
+  "name": "Heard Island and McDonald Islands", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "va", 
+  "country_name": "Holy See (Vatican City State)", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.271630", 
+  "name": "Holy See (Vatican City State)", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "HN", 
+  "country_name": "Honduras", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.298662", 
+  "name": "Honduras", 
+  "time_zones": "America/Tegucigalpa"
+ }, 
+ {
+  "code": "HK", 
+  "country_name": "Hong Kong", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.320293", 
+  "name": "Hong Kong", 
+  "time_zones": "Asia/Hong_Kong"
+ }, 
+ {
+  "code": "HU", 
+  "country_name": "Hungary", 
+  "date_format": "yyyy-mm-dd", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.323434", 
+  "name": "Hungary", 
+  "time_zones": "Europe/Budapest"
+ }, 
+ {
+  "code": "IS", 
+  "country_name": "Iceland", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.369013", 
+  "name": "Iceland", 
+  "time_zones": "Atlantic/Reykjavik"
+ }, 
+ {
+  "code": "ID", 
+  "country_name": "Indonesia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.386161", 
+  "name": "Indonesia", 
+  "time_zones": "Asia/Jakarta\nAsia/Jayapura\nAsia/Makassar\nAsia/Pontianak"
+ }, 
+ {
+  "code": "ir", 
+  "country_name": "Iran, Islamic Republic of", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.391099", 
+  "name": "Iran, Islamic Republic of", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "iq", 
+  "country_name": "Iraq", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.486605", 
+  "name": "Iraq", 
+  "time_zones": "Asia/Baghdad"
+ }, 
+ {
+  "code": "IE", 
+  "country_name": "Ireland", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.489534", 
+  "name": "Ireland", 
+  "time_zones": "Europe/Dublin"
+ }, 
+ {
+  "code": "im", 
+  "country_name": "Isle of Man", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.492410", 
+  "name": "Isle of Man", 
+  "time_zones": "Europe/London"
+ }, 
+ {
+  "code": "IL", 
+  "country_name": "Israel", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.495455", 
+  "name": "Israel", 
+  "time_zones": "Asia/Jerusalem"
+ }, 
+ {
+  "code": "IT", 
+  "country_name": "Italy", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.540308", 
+  "name": "Italy", 
+  "time_zones": "Europe/Rome"
+ }, 
+ {
+  "code": "CI", 
+  "country_name": "Ivory Coast", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.569602", 
+  "name": "Ivory Coast", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "JM", 
+  "country_name": "Jamaica", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.572617", 
+  "name": "Jamaica", 
+  "time_zones": "America/Jamaica"
+ }, 
+ {
+  "code": "JP", 
+  "country_name": "Japan", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.575552", 
+  "name": "Japan", 
+  "time_zones": "Asia/Tokyo"
+ }, 
+ {
+  "code": "je", 
+  "country_name": "Jersey", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.578649", 
+  "name": "Jersey", 
+  "time_zones": "Europe/London"
+ }, 
+ {
+  "code": "JO", 
+  "country_name": "Jordan", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.601007", 
+  "name": "Jordan", 
+  "time_zones": "Asia/Amman"
+ }, 
+ {
+  "code": "KZ", 
+  "country_name": "Kazakhstan", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.604671", 
+  "name": "Kazakhstan", 
+  "time_zones": "Asia/Almaty\nAsia/Aqtau\nAsia/Aqtobe\nAsia/Oral\nAsia/Qyzylorda"
+ }, 
+ {
+  "code": "KE", 
+  "country_name": "Kenya", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.607418", 
+  "name": "Kenya", 
+  "time_zones": "Africa/Nairobi"
+ }, 
+ {
+  "code": "ki", 
+  "country_name": "Kiribati", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.610237", 
+  "name": "Kiribati", 
+  "time_zones": "Pacific/Enderbury\nPacific/Kiritimati\nPacific/Tarawa"
+ }, 
+ {
+  "code": "kp", 
+  "country_name": "Korea, Democratic Peoples Republic of", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.613066", 
+  "name": "Korea, Democratic Peoples Republic of", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "kr", 
+  "country_name": "Korea, Republic of", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.616075", 
+  "name": "Korea, Republic of", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "KW", 
+  "country_name": "Kuwait", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.620250", 
+  "name": "Kuwait", 
+  "time_zones": "Asia/Kuwait"
+ }, 
+ {
+  "code": "KG", 
+  "country_name": "Kyrgyzstan", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.623154", 
+  "name": "Kyrgyzstan", 
+  "time_zones": "Asia/Bishkek"
+ }, 
+ {
+  "code": "la", 
+  "country_name": "Lao Peoples Democratic Republic", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.637320", 
+  "name": "Lao Peoples Democratic Republic", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "LV", 
+  "country_name": "Latvia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.640297", 
+  "name": "Latvia", 
+  "time_zones": "Europe/Riga"
+ }, 
+ {
+  "code": "LB", 
+  "country_name": "Lebanon", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.643338", 
+  "name": "Lebanon", 
+  "time_zones": "Asia/Beirut"
+ }, 
+ {
+  "code": "LS", 
+  "country_name": "Lesotho", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.662150", 
+  "name": "Lesotho", 
+  "time_zones": "Africa/Maseru"
+ }, 
+ {
+  "code": "lr", 
+  "country_name": "Liberia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.665109", 
+  "name": "Liberia", 
+  "time_zones": "Africa/Monrovia"
+ }, 
+ {
+  "code": "ly", 
+  "country_name": "Libya", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.720776", 
+  "name": "Libya", 
+  "time_zones": "Africa/Tripoli"
+ }, 
+ {
+  "code": "LI", 
+  "country_name": "Liechtenstein", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.784943", 
+  "name": "Liechtenstein", 
+  "time_zones": "Europe/Vaduz"
+ }, 
+ {
+  "code": "LT", 
+  "country_name": "Lithuania", 
+  "date_format": "yyyy-mm-dd", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.829146", 
+  "name": "Lithuania", 
+  "time_zones": "Europe/Vilnius"
+ }, 
+ {
+  "code": "LU", 
+  "country_name": "Luxembourg", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.843600", 
+  "name": "Luxembourg", 
+  "time_zones": "Europe/Luxembourg"
+ }, 
+ {
+  "code": "MO", 
+  "country_name": "Macao", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.865701", 
+  "name": "Macao", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "MK", 
+  "country_name": "Macedonia, Republic of", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.872282", 
+  "name": "Macedonia, Republic of", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "MG", 
+  "country_name": "Madagascar", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.901945", 
+  "name": "Madagascar", 
+  "time_zones": "Indian/Antananarivo"
+ }, 
+ {
+  "code": "MW", 
+  "country_name": "Malawi", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:51.971788", 
+  "name": "Malawi", 
+  "time_zones": "Africa/Blantyre"
+ }, 
+ {
+  "code": "MY", 
+  "country_name": "Malaysia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.270035", 
+  "name": "Malaysia", 
+  "time_zones": "Asia/Kuala_Lumpur\nAsia/Kuching"
+ }, 
+ {
+  "code": "MV", 
+  "country_name": "Maldives", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.274320", 
+  "name": "Maldives", 
+  "time_zones": "Indian/Maldives"
+ }, 
+ {
+  "code": "ML", 
+  "country_name": "Mali", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.280208", 
+  "name": "Mali", 
+  "time_zones": "Africa/Bamako"
+ }, 
+ {
+  "code": "MT", 
+  "country_name": "Malta", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.285101", 
+  "name": "Malta", 
+  "time_zones": "Europe/Malta"
+ }, 
+ {
+  "code": "MH", 
+  "country_name": "Marshall Islands", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.288124", 
+  "name": "Marshall Islands", 
+  "time_zones": "Pacific/Kwajalein\nPacific/Majuro"
+ }, 
+ {
+  "code": "MQ", 
+  "country_name": "Martinique", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.315186", 
+  "name": "Martinique", 
+  "time_zones": "America/Martinique"
+ }, 
+ {
+  "code": "MR", 
+  "country_name": "Mauritania", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.344144", 
+  "name": "Mauritania", 
+  "time_zones": "Africa/Nouakchott"
+ }, 
+ {
+  "code": "MU", 
+  "country_name": "Mauritius", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.347080", 
+  "name": "Mauritius", 
+  "time_zones": "Indian/Mauritius"
+ }, 
+ {
+  "code": "yt", 
+  "country_name": "Mayotte", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.461283", 
+  "name": "Mayotte", 
+  "time_zones": "Indian/Mayotte"
+ }, 
+ {
+  "code": "MX", 
+  "country_name": "Mexico", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.464576", 
+  "name": "Mexico", 
+  "time_zones": "America/Bahia_Banderas\nAmerica/Cancun\nAmerica/Chihuahua\nAmerica/Hermosillo\nAmerica/Matamoros\nAmerica/Mazatlan\nAmerica/Merida\nAmerica/Mexico_City\nAmerica/Monterrey\nAmerica/Ojinaga\nAmerica/Santa_Isabel\nAmerica/Tijuana"
+ }, 
+ {
+  "code": "FM", 
+  "country_name": "Micronesia, Federated States of", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.467762", 
+  "name": "Micronesia, Federated States of", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "MD", 
+  "country_name": "Moldova, Republic of", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.470703", 
+  "name": "Moldova, Republic of", 
+  "time_zones": ""
+ }, 
+ {
+  "code": "MC", 
+  "country_name": "Monaco", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.473725", 
+  "name": "Monaco", 
+  "time_zones": "Europe/Monaco"
+ }, 
+ {
+  "code": "MN", 
+  "country_name": "Mongolia", 
+  "date_format": "yyyy-mm-dd", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.485540", 
+  "name": "Mongolia", 
+  "time_zones": "Asia/Choibalsan\nAsia/Hovd\nAsia/Ulaanbaatar"
+ }, 
+ {
+  "code": "me", 
+  "country_name": "Montenegro", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.488360", 
+  "name": "Montenegro", 
+  "time_zones": "Europe/Belgrade"
+ }, 
+ {
+  "code": "MS", 
+  "country_name": "Montserrat", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.491223", 
+  "name": "Montserrat", 
+  "time_zones": "America/Montserrat"
+ }, 
+ {
+  "code": "MA", 
+  "country_name": "Morocco", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.494020", 
+  "name": "Morocco", 
+  "time_zones": "Africa/Casablanca"
+ }, 
+ {
+  "code": "MZ", 
+  "country_name": "Mozambique", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.496746", 
+  "name": "Mozambique", 
+  "time_zones": "Africa/Maputo"
+ }, 
+ {
+  "code": "MM", 
+  "country_name": "Myanmar", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 16:08:52.499574", 
+  "name": "Myanmar", 
+  "time_zones": "Asia/Rangoon"
+ }, 
+ {
+  "code": "NA", 
+  "country_name": "Namibia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.204234", 
+  "name": "Namibia", 
+  "time_zones": "Africa/Windhoek"
+ }, 
+ {
+  "code": "nr", 
+  "country_name": "Nauru", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.245742", 
+  "name": "Nauru", 
+  "time_zones": "Pacific/Nauru"
+ }, 
+ {
+  "code": "NP", 
+  "country_name": "Nepal", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.249839", 
+  "name": "Nepal", 
+  "time_zones": "Asia/Kathmandu"
+ }, 
+ {
+  "code": "NL", 
+  "country_name": "Netherlands", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.323906", 
+  "name": "Netherlands", 
+  "time_zones": "Europe/Amsterdam"
+ }, 
+ {
+  "code": "NC", 
+  "country_name": "New Caledonia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.327553", 
+  "name": "New Caledonia", 
+  "time_zones": "Pacific/Noumea"
+ }, 
+ {
+  "code": "NZ", 
+  "country_name": "New Zealand", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.331237", 
+  "name": "New Zealand", 
+  "time_zones": "Pacific/Auckland\nPacific/Chatham"
+ }, 
+ {
+  "code": "NI", 
+  "country_name": "Nicaragua", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.334759", 
+  "name": "Nicaragua", 
+  "time_zones": "America/Managua"
+ }, 
+ {
+  "code": "NE", 
+  "country_name": "Niger", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.404673", 
+  "name": "Niger", 
+  "time_zones": "Africa/Niamey"
+ }, 
+ {
+  "code": "NG", 
+  "country_name": "Nigeria", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.408209", 
+  "name": "Nigeria", 
+  "time_zones": "Africa/Lagos"
+ }, 
+ {
+  "code": "nu", 
+  "country_name": "Niue", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.411854", 
+  "name": "Niue", 
+  "time_zones": "Pacific/Niue"
+ }, 
+ {
+  "code": "nf", 
+  "country_name": "Norfolk Island", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.462045", 
+  "name": "Norfolk Island", 
+  "time_zones": "Pacific/Norfolk"
+ }, 
+ {
+  "code": "mp", 
+  "country_name": "Northern Mariana Islands", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.465978", 
+  "name": "Northern Mariana Islands", 
+  "time_zones": "Pacific/Saipan"
+ }, 
+ {
+  "code": "NO", 
+  "country_name": "Norway", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.469723", 
+  "name": "Norway", 
+  "time_zones": "Europe/Oslo"
+ }, 
+ {
+  "code": "OM", 
+  "country_name": "Oman", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.473673", 
+  "name": "Oman", 
+  "time_zones": "Asia/Muscat"
+ }, 
+ {
+  "code": "PK", 
+  "country_name": "Pakistan", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.477330", 
+  "name": "Pakistan", 
+  "time_zones": "Asia/Karachi"
+ }, 
+ {
+  "code": "PW", 
+  "country_name": "Palau", 
+  "date_format": "mm-dd-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.480918", 
+  "name": "Palau", 
+  "time_zones": "Pacific/Palau"
+ }, 
+ {
+  "code": "ps", 
+  "country_name": "Palestinian Territory, Occupied", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.484533", 
+  "name": "Palestinian Territory, Occupied", 
+  "time_zones": null
+ }, 
+ {
+  "code": "PA", 
+  "country_name": "Panama", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.558065", 
+  "name": "Panama", 
+  "time_zones": "America/Panama"
+ }, 
+ {
+  "code": "PG", 
+  "country_name": "Papua New Guinea", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.561758", 
+  "name": "Papua New Guinea", 
+  "time_zones": "Pacific/Port_Moresby"
+ }, 
+ {
+  "code": "PY", 
+  "country_name": "Paraguay", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.565430", 
+  "name": "Paraguay", 
+  "time_zones": "America/Asuncion"
+ }, 
+ {
+  "code": "PE", 
+  "country_name": "Peru", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.569461", 
+  "name": "Peru", 
+  "time_zones": "America/Lima"
+ }, 
+ {
+  "code": "PH", 
+  "country_name": "Philippines", 
+  "date_format": "mm-dd-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.573859", 
+  "name": "Philippines", 
+  "time_zones": "Asia/Manila"
+ }, 
+ {
+  "code": "pn", 
+  "country_name": "Pitcairn", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.577608", 
+  "name": "Pitcairn", 
+  "time_zones": "Pacific/Pitcairn"
+ }, 
+ {
+  "code": "PL", 
+  "country_name": "Poland", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.581198", 
+  "name": "Poland", 
+  "time_zones": "Europe/Warsaw"
+ }, 
+ {
+  "code": "PT", 
+  "country_name": "Portugal", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.584809", 
+  "name": "Portugal", 
+  "time_zones": "Atlantic/Azores\nAtlantic/Madeira\nEurope/Lisbon"
+ }, 
+ {
+  "code": "US", 
+  "country_name": "Puerto Rico", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.588531", 
+  "name": "Puerto Rico", 
+  "time_zones": "America/Puerto_Rico"
+ }, 
+ {
+  "code": "QA", 
+  "country_name": "Qatar", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.592372", 
+  "name": "Qatar", 
+  "time_zones": "Asia/Qatar"
+ }, 
+ {
+  "code": "RE", 
+  "country_name": "R\u00e9union", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.596056", 
+  "name": "R\u00e9union", 
+  "time_zones": null
+ }, 
+ {
+  "code": "RO", 
+  "country_name": "Romania", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.599819", 
+  "name": "Romania", 
+  "time_zones": "Europe/Bucharest"
+ }, 
+ {
+  "code": "RU", 
+  "country_name": "Russian Federation", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.622833", 
+  "name": "Russian Federation", 
+  "time_zones": null
+ }, 
+ {
+  "code": "RW", 
+  "country_name": "Rwanda", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.627011", 
+  "name": "Rwanda", 
+  "time_zones": "Africa/Kigali"
+ }, 
+ {
+  "code": "bl", 
+  "country_name": "Saint Barth\u00e9lemy", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.631198", 
+  "name": "Saint Barth\u00e9lemy", 
+  "time_zones": null
+ }, 
+ {
+  "code": "sh", 
+  "country_name": "Saint Helena, Ascension and Tristan da Cunha", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.635168", 
+  "name": "Saint Helena, Ascension and Tristan da Cunha", 
+  "time_zones": null
+ }, 
+ {
+  "code": "KN", 
+  "country_name": "Saint Kitts and Nevis", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.652959", 
+  "name": "Saint Kitts and Nevis", 
+  "time_zones": "America/St_Kitts"
+ }, 
+ {
+  "code": "LC", 
+  "country_name": "Saint Lucia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.657026", 
+  "name": "Saint Lucia", 
+  "time_zones": "America/St_Lucia"
+ }, 
+ {
+  "code": "mf", 
+  "country_name": "Saint Martin (French part)", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.660750", 
+  "name": "Saint Martin (French part)", 
+  "time_zones": null
+ }, 
+ {
+  "code": "pm", 
+  "country_name": "Saint Pierre and Miquelon", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.664429", 
+  "name": "Saint Pierre and Miquelon", 
+  "time_zones": null
+ }, 
+ {
+  "code": "VC", 
+  "country_name": "Saint Vincent and the Grenadines", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.668318", 
+  "name": "Saint Vincent and the Grenadines", 
+  "time_zones": "America/St_Vincent"
+ }, 
+ {
+  "code": "ws", 
+  "country_name": "Samoa", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.672411", 
+  "name": "Samoa", 
+  "time_zones": "Pacific/Apia"
+ }, 
+ {
+  "code": "SM", 
+  "country_name": "San Marino", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.676213", 
+  "name": "San Marino", 
+  "time_zones": "Europe/Rome"
+ }, 
+ {
+  "code": "st", 
+  "country_name": "Sao Tome and Principe", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.680007", 
+  "name": "Sao Tome and Principe", 
+  "time_zones": null
+ }, 
+ {
+  "code": "SA", 
+  "country_name": "Saudi Arabia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.683654", 
+  "name": "Saudi Arabia", 
+  "time_zones": "Asia/Riyadh"
+ }, 
+ {
+  "code": "SN", 
+  "country_name": "Senegal", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.687704", 
+  "name": "Senegal", 
+  "time_zones": "Africa/Dakar"
+ }, 
+ {
+  "code": "rs", 
+  "country_name": "Serbia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.691614", 
+  "name": "Serbia", 
+  "time_zones": "Europe/Belgrade"
+ }, 
+ {
+  "code": "SC", 
+  "country_name": "Seychelles", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.695459", 
+  "name": "Seychelles", 
+  "time_zones": "Indian/Mahe"
+ }, 
+ {
+  "code": "SL", 
+  "country_name": "Sierra Leone", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.699168", 
+  "name": "Sierra Leone", 
+  "time_zones": "Africa/Freetown"
+ }, 
+ {
+  "code": "SG", 
+  "country_name": "Singapore", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.715971", 
+  "name": "Singapore", 
+  "time_zones": "Asia/Singapore"
+ }, 
+ {
+  "code": "sx", 
+  "country_name": "Sint Maarten (Dutch part)", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.719792", 
+  "name": "Sint Maarten (Dutch part)", 
+  "time_zones": null
+ }, 
+ {
+  "code": "SK", 
+  "country_name": "Slovakia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.735620", 
+  "name": "Slovakia", 
+  "time_zones": "Europe/Prague"
+ }, 
+ {
+  "code": "SI", 
+  "country_name": "Slovenia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.739473", 
+  "name": "Slovenia", 
+  "time_zones": "Europe/Belgrade"
+ }, 
+ {
+  "code": "sb", 
+  "country_name": "Solomon Islands", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.743235", 
+  "name": "Solomon Islands", 
+  "time_zones": "Pacific/Guadalcanal"
+ }, 
+ {
+  "code": "so", 
+  "country_name": "Somalia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.746959", 
+  "name": "Somalia", 
+  "time_zones": "Africa/Mogadishu"
+ }, 
+ {
+  "code": "ZA", 
+  "country_name": "South Africa", 
+  "date_format": "yyyy-mm-dd", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.755474", 
+  "name": "South Africa", 
+  "time_zones": "Africa/Johannesburg"
+ }, 
+ {
+  "code": "gs", 
+  "country_name": "South Georgia and the South Sandwich Islands", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.759149", 
+  "name": "South Georgia and the South Sandwich Islands", 
+  "time_zones": null
+ }, 
+ {
+  "code": "ss", 
+  "country_name": "South Sudan", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.762965", 
+  "name": "South Sudan", 
+  "time_zones": "Africa/Juba"
+ }, 
+ {
+  "code": "ES", 
+  "country_name": "Spain", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.766668", 
+  "name": "Spain", 
+  "time_zones": "Africa/Ceuta\nAtlantic/Canary\nEurope/Madrid"
+ }, 
+ {
+  "code": "LK", 
+  "country_name": "Sri Lanka", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.770572", 
+  "name": "Sri Lanka", 
+  "time_zones": "Asia/Colombo"
+ }, 
+ {
+  "code": "sd", 
+  "country_name": "Sudan", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.774419", 
+  "name": "Sudan", 
+  "time_zones": "Africa/Khartoum"
+ }, 
+ {
+  "code": "SR", 
+  "country_name": "Suriname", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.778153", 
+  "name": "Suriname", 
+  "time_zones": "America/Paramaribo"
+ }, 
+ {
+  "code": "sj", 
+  "country_name": "Svalbard and Jan Mayen", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.787719", 
+  "name": "Svalbard and Jan Mayen", 
+  "time_zones": null
+ }, 
+ {
+  "code": "SZ", 
+  "country_name": "Swaziland", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.791668", 
+  "name": "Swaziland", 
+  "time_zones": "Africa/Mbabane"
+ }, 
+ {
+  "code": "SE", 
+  "country_name": "Sweden", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.795549", 
+  "name": "Sweden", 
+  "time_zones": "Europe/Stockholm"
+ }, 
+ {
+  "code": "CH", 
+  "country_name": "Switzerland", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.799171", 
+  "name": "Switzerland", 
+  "time_zones": "Europe/Zurich"
+ }, 
+ {
+  "code": "SY", 
+  "country_name": "Syrian Arab Republic", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.802656", 
+  "name": "Syrian Arab Republic", 
+  "time_zones": null
+ }, 
+ {
+  "code": "TW", 
+  "country_name": "Taiwan", 
+  "date_format": "yyyy-mm-dd", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.806288", 
+  "name": "Taiwan", 
+  "time_zones": null
+ }, 
+ {
+  "code": "tc", 
+  "country_name": "Tajikistan", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.810100", 
+  "name": "Tajikistan", 
+  "time_zones": "Asia/Dushanbe"
+ }, 
+ {
+  "code": "TZ", 
+  "country_name": "Tanzania, United Republic of", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.813802", 
+  "name": "Tanzania, United Republic of", 
+  "time_zones": null
+ }, 
+ {
+  "code": "th", 
+  "country_name": "Thailand", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.817392", 
+  "name": "Thailand", 
+  "time_zones": "Asia/Bangkok"
+ }, 
+ {
+  "code": "tl", 
+  "country_name": "Timor-Leste", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.821289", 
+  "name": "Timor-Leste", 
+  "time_zones": null
+ }, 
+ {
+  "code": "TG", 
+  "country_name": "Togo", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.837847", 
+  "name": "Togo", 
+  "time_zones": "Africa/Lome"
+ }, 
+ {
+  "code": "tk", 
+  "country_name": "Tokelau", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.841705", 
+  "name": "Tokelau", 
+  "time_zones": "Pacific/Fakaofo"
+ }, 
+ {
+  "code": "to", 
+  "country_name": "Tonga", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.845353", 
+  "name": "Tonga", 
+  "time_zones": "Pacific/Tongatapu"
+ }, 
+ {
+  "code": "TT", 
+  "country_name": "Trinidad and Tobago", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.848932", 
+  "name": "Trinidad and Tobago", 
+  "time_zones": "America/Port_of_Spain"
+ }, 
+ {
+  "code": "TN", 
+  "country_name": "Tunisia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.852689", 
+  "name": "Tunisia", 
+  "time_zones": "Africa/Tunis"
+ }, 
+ {
+  "code": "TR", 
+  "country_name": "Turkey", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.856428", 
+  "name": "Turkey", 
+  "time_zones": "Europe/Istanbul"
+ }, 
+ {
+  "code": "TM", 
+  "country_name": "Turkmenistan", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.860015", 
+  "name": "Turkmenistan", 
+  "time_zones": "Asia/Ashgabat"
+ }, 
+ {
+  "code": "TC", 
+  "country_name": "Turks and Caicos Islands", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.863725", 
+  "name": "Turks and Caicos Islands", 
+  "time_zones": null
+ }, 
+ {
+  "code": "tv", 
+  "country_name": "Tuvalu", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.958269", 
+  "name": "Tuvalu", 
+  "time_zones": "Pacific/Funafuti"
+ }, 
+ {
+  "code": "UG", 
+  "country_name": "Uganda", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.964079", 
+  "name": "Uganda", 
+  "time_zones": "Africa/Kampala"
+ }, 
+ {
+  "code": "ua", 
+  "country_name": "Ukraine", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.969190", 
+  "name": "Ukraine", 
+  "time_zones": "Europe/Kiev\nEurope/Simferopol\nEurope/Uzhgorod\nEurope/Zaporozhye"
+ }, 
+ {
+  "code": "AE", 
+  "country_name": "United Arab Emirates", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.974063", 
+  "name": "United Arab Emirates", 
+  "time_zones": "Asia/Dubai"
+ }, 
+ {
+  "code": "GB", 
+  "country_name": "United Kingdom", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:27.978247", 
+  "name": "United Kingdom", 
+  "time_zones": "Europe/London"
+ }, 
+ {
+  "code": "um", 
+  "country_name": "United States Minor Outlying Islands", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.159884", 
+  "name": "United States Minor Outlying Islands", 
+  "time_zones": null
+ }, 
+ {
+  "code": "UY", 
+  "country_name": "Uruguay", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.175559", 
+  "name": "Uruguay", 
+  "time_zones": "America/Montevideo"
+ }, 
+ {
+  "code": "UZ", 
+  "country_name": "Uzbekistan", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.187251", 
+  "name": "Uzbekistan", 
+  "time_zones": "Asia/Samarkand\nAsia/Tashkent"
+ }, 
+ {
+  "code": "VU", 
+  "country_name": "Vanuatu", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.190849", 
+  "name": "Vanuatu", 
+  "time_zones": "Pacific/Efate"
+ }, 
+ {
+  "code": "VE", 
+  "country_name": "Venezuela, Bolivarian Republic of", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.216509", 
+  "name": "Venezuela, Bolivarian Republic of", 
+  "time_zones": null
+ }, 
+ {
+  "code": "VN", 
+  "country_name": "Vietnam", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.220822", 
+  "name": "Vietnam", 
+  "time_zones": null
+ }, 
+ {
+  "code": "vg", 
+  "country_name": "Virgin Islands, British", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.224633", 
+  "name": "Virgin Islands, British", 
+  "time_zones": null
+ }, 
+ {
+  "code": "vi", 
+  "country_name": "Virgin Islands, U.S.", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.228464", 
+  "name": "Virgin Islands, U.S.", 
+  "time_zones": null
+ }, 
+ {
+  "code": "WF", 
+  "country_name": "Wallis and Futuna", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.232178", 
+  "name": "Wallis and Futuna", 
+  "time_zones": null
+ }, 
+ {
+  "code": "eh", 
+  "country_name": "Western Sahara", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.235719", 
+  "name": "Western Sahara", 
+  "time_zones": "Africa/El_Aaiun"
+ }, 
+ {
+  "code": "YE", 
+  "country_name": "Yemen", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.239184", 
+  "name": "Yemen", 
+  "time_zones": "Asia/Aden"
+ }, 
+ {
+  "code": "ZM", 
+  "country_name": "Zambia", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.242928", 
+  "name": "Zambia", 
+  "time_zones": "Africa/Lusaka"
+ }, 
+ {
+  "code": "ZW", 
+  "country_name": "Zimbabwe", 
+  "date_format": "dd-mm-yyyy", 
+  "docstatus": 0, 
+  "doctype": "Country", 
+  "modified": "2016-11-22 17:19:28.254699", 
+  "name": "Zimbabwe", 
+  "time_zones": "Africa/Harare"
+ }
+]
