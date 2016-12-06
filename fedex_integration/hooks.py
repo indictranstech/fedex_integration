@@ -70,7 +70,7 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-fixtures = ["Country", "Property Setter", "Custom Field"]
+fixtures = ["Country", "Property Setter", "Custom Field", "FedEx Package"]
 
 doc_events = {
 	"Packing Slip":{
