@@ -1,17 +1,20 @@
 from __future__ import unicode_literals
 import frappe
-from frappe.utils import cstr, flt
+from frappe.utils import cstr, flt, now, get_datetime, now_datetime
+from frappe import _
 import logging
 import sys
 import json
 from fedex.config import FedexConfig
-from fedex.services.ship_service import FedexProcessShipmentRequest
-from fedex.services.ship_service import FedexDeleteShipmentRequest
+from fedex.services.ship_service import FedexProcessShipmentRequest, FedexDeleteShipmentRequest
+from fedex.services.country_service import FedexValidatePostalRequest
+from fedex.services.pickup_service import FedexCreatePickupRequest
+from fedex.services.rate_service import FedexRateServiceRequest
 from frappe.utils.file_manager import save_file
 from fedex.services.track_service import FedexTrackRequest
 import frappe.client as client
 import base64
-
+import datetime
 
 class FedexController():
 	
@@ -20,60 +23,48 @@ class FedexController():
 		& other supplementary tasks. """
 
 	uom_mapper = {"Kg":"KG", "LB":"LB"}
-	settings = frappe.db.get_singles_dict("Fedex Settings")
-	CONFIG_OBJ = FedexConfig(key= settings.get("fedex_key"),
-	                     password= client.get_password("Fedex Settings", None, "fedex_password"),
-	                     account_number= settings.get("fedex_account_no"),
-	                     meter_number= settings.get("fedex_meter_number"),
-	                     freight_account_number= "510087020",
-	                     use_test_server=True)
 
+	def __init__(self, fedex_account):
+		settings = frappe.db.get_value("Shipment Forwarder", fedex_account, "*")
+		self.config_obj = FedexConfig(key= settings.get("fedex_key"),
+								password= client.get_password("Shipment Forwarder", fedex_account, "password"),
+								account_number= settings.get("account_no"),
+								meter_number= settings.get("fedex_meter_no"),
+								freight_account_number= "510087020",
+								use_test_server=True)
 
 	def init_shipment(self, doc):
-		shipment = FedexController.set_shipment_details(doc)
-		FedexController.set_shipper_info(doc.company_address_name, shipment)
-		FedexController.set_recipient_info(doc, shipment)
-		# FedexController.set_biller_info(doc.customer_address, shipment)
+		shipment = FedexProcessShipmentRequest(self.config_obj)
+		self.set_shipment_details(doc, shipment)
+		self.set_shipper_info(doc.company_address_name, shipment)
+		self.set_recipient_info(doc, shipment)
 		FedexController.set_fedex_label_info(shipment)
-		# FedexController.set_package_details(doc, shipment)
 		FedexController.set_commodities_info(doc, shipment)
+		self.set_commercial_invoice_info(shipment, doc)
 		self.pkg_count = doc.no_of_packages
 		return shipment
 
 
-	@classmethod
-	def set_shipment_details(cls_obj, doc):
-		shipment = FedexProcessShipmentRequest(cls_obj.CONFIG_OBJ)
+	
+	def set_shipment_details(self, doc, shipment):
 		shipment.RequestedShipment.DropoffType = doc.drop_off_type
 		shipment.RequestedShipment.ServiceType = doc.service_type
 		shipment.RequestedShipment.PackagingType = doc.packaging_type
-		# shipment.RequestedShipment.FreightShipmentDetail.FedExFreightAccountNumber \
-		# 											= cls_obj.CONFIG_OBJ.freight_account_number
-		
-		# shipment.RequestedShipment.ShippingChargesPayment.Payor.ResponsibleParty.AccountNumber = cls_obj.CONFIG_OBJ.account_number
 		shipment.RequestedShipment.ShippingChargesPayment.PaymentType = doc.shipping_payment_by
 		shipment.RequestedShipment.ShippingChargesPayment.Payor.ResponsibleParty.AccountNumber = \
-		    cls_obj.CONFIG_OBJ.account_number if doc.shipping_payment_by == "SENDER" else doc.shipping_payment_Account
+		    self.config_obj.account_number if doc.shipping_payment_by == "SENDER" else doc.shipping_payment_Account
 
 		shipment.RequestedShipment.CustomsClearanceDetail.DutiesPayment.PaymentType = doc.duties_payment_by
 		shipment.RequestedShipment.CustomsClearanceDetail.DutiesPayment.Payor.ResponsibleParty.AccountNumber = \
-			cls_obj.CONFIG_OBJ.account_number if doc.duties_payment_by == "SENDER" else doc.duties_payment_Account			
-
-		# spec = shipment.create_wsdl_object_of_type('ShippingDocumentSpecification')
-		# spec.ShippingDocumentTypes = [spec.CertificateOfOrigin]
-		# shipment.RequestedShipment.ShippingDocumentSpecification = spec
-
-		# role = shipment.create_wsdl_object_of_type('FreightShipmentRoleType')
-		# shipment.RequestedShipment.FreightShipmentDetail.Role = role.SHIPPER
-		# shipment.RequestedShipment.FreightShipmentDetail.CollectTermsType = 'STANDARD'
+			self.config_obj.account_number if doc.duties_payment_by == "SENDER" else doc.duties_payment_Account
 		return shipment	
 	
 	
-	@classmethod
-	def set_shipper_info(cls_obj, shipper_id, shipment):
+
+	def set_shipper_info(self, shipper_id, shipment):
 		shipper_details = frappe.db.get_value("Address", shipper_id, "*", as_dict=True)
 		
-		shipment.RequestedShipment.Shipper.AccountNumber = cls_obj.CONFIG_OBJ.account_number
+		shipment.RequestedShipment.Shipper.AccountNumber = self.config_obj.account_number
 		shipment.RequestedShipment.Shipper.Contact.PersonName = shipper_details.get("address_title")
 		shipment.RequestedShipment.Shipper.Contact.CompanyName = shipper_details.get("company")
 		shipment.RequestedShipment.Shipper.Contact.PhoneNumber = shipper_details.get("phone")
@@ -87,8 +78,8 @@ class FedexController():
 																else False
 
 
-	@classmethod	
-	def set_recipient_info(cls_obj, doc, shipment):
+
+	def set_recipient_info(self, doc, shipment):
 		recipient_details = frappe.db.get_value("Address", doc.shipping_address_name, "*", as_dict=True)
 		
 		shipment.RequestedShipment.Recipient.Contact.PersonName = recipient_details.get("address_title")
@@ -106,8 +97,8 @@ class FedexController():
 		shipment.RequestedShipment.FreightShipmentDetail.TotalHandlingUnits = doc.total_handling_units
 
 	    
-	@classmethod
-	def set_biller_info(cls_obj, billing_address, shipment):
+
+	def set_biller_info(self, billing_address, shipment):
 		biller_details = frappe.db.get_value("Address", billing_address, "*", as_dict=True)
 		
 		billing_contact_address = shipment.RequestedShipment.CustomsClearanceDetail.DutiesPayment.Payor.ResponsibleParty
@@ -120,13 +111,13 @@ class FedexController():
 		billing_contact_address.Address.PostalCode = biller_details.get("pincode")
 		billing_contact_address.Address.CountryCode = biller_details.get("country_code")
 		billing_contact_address.Address.Residential = True if biller_details.get("is_residential_address") else False	    
-		billing_contact_address.AccountNumber = cls_obj.CONFIG_OBJ.account_number
+		billing_contact_address.AccountNumber = self.config_obj.account_number
 
 	@staticmethod
 	def set_fedex_label_info(shipment):
 		shipment.RequestedShipment.LabelSpecification.LabelFormatType = "COMMON2D"
 		shipment.RequestedShipment.LabelSpecification.ImageType = 'PDF'
-		shipment.RequestedShipment.LabelSpecification.LabelStockType = 'PAPER_7X4.75'
+		shipment.RequestedShipment.LabelSpecification.LabelStockType = 'PAPER_8.5X11_TOP_HALF_LABEL'
 		shipment.RequestedShipment.LabelSpecification.LabelPrintingOrientation = 'BOTTOM_EDGE_OF_TEXT_FIRST'
 		shipment.RequestedShipment.EdtRequestType = 'NONE'
 
@@ -141,48 +132,54 @@ class FedexController():
 				"Name":row.get("item_code"),
 				"Description":row.get("description"),
 				"Weight": {"Units": FedexController.uom_mapper.get(row.get("weight_uom")),\
-								 "Value":row.net_weight},
+								 "Value":row.net_weight * row.get("qty")},
 				"NumberOfPieces":row.get("no_of_pieces"),
-				"CountryOfManufacture":"IN",
+				"CountryOfManufacture":row.get("country_code"),
 				"Quantity":row.get("qty"),
 				"QuantityUnits":"EA",
-				"UnitPrice":{"Currency":doc.currency, "Amount":row.amount},
+				"UnitPrice":{"Currency":doc.currency, "Amount":row.rate},
 				"CustomsValue":{"Currency":doc.currency, "Amount":row.amount}
 			}
 			shipment.RequestedShipment.CustomsClearanceDetail.Commodities.append(commodity_dict)
-		shipment.RequestedShipment.CustomsClearanceDetail.CustomsValue.Amount = 145715.00
+		shipment.RequestedShipment.CustomsClearanceDetail.CustomsValue.Amount = doc.total
 		shipment.RequestedShipment.CustomsClearanceDetail.CustomsValue.Currency = doc.currency
 
-	@classmethod
-	def set_package_details(cls_obj, doc, shipment):
-		packing_slips = frappe.get_all("Packing Slip", fields=["*"], filters={"delivery_note":doc.name, "docstatus":1}, 
-					order_by="creation asc", debug=1)
-		print "packing slips____________", packing_slips
-		for ps in packing_slips:	
-			FedexController.set_package_data(shipment)
-
-		# pallet_weight = shipment.create_wsdl_object_of_type('Weight')
-		# pallet_weight.Value = total_weight
-		# pallet_weight.Units = "KG"
-		# shipment.RequestedShipment.FreightShipmentDetail.PalletWeight = pallet_weight
-
 	
-	def set_package_data(self, pkg, shipment, pkg_no):
+	def set_package_data(self, pkg, shipment, pkg_no, doc):
+		package = self.set_package_weight(shipment, pkg, doc)
+		self.set_package_dimensions(shipment, pkg, package)
+		package.SequenceNumber = pkg_no
+		shipment.RequestedShipment.RequestedPackageLineItems = [package]
+		shipment.RequestedShipment.PackageCount = self.pkg_count
+		# shipment.add_package(package)
+
+	def set_package_dimensions(self, shipment, pkg, package):
+		# adding package dimensions
+		dimn = shipment.create_wsdl_object_of_type('Dimensions')
+		dimn.Length = pkg.length
+		dimn.Width = pkg.width
+		dimn.Height = pkg.height
+		dimn.Units = pkg.unit
+		package.Dimensions = dimn
+	
+	def set_package_weight(self, shipment, pkg, doc):
 		package = shipment.create_wsdl_object_of_type('RequestedPackageLineItem')
-		package.PhysicalPackaging = 'BOX'
-		# adding weight
-		print "package check uom_______", pkg.uom
+		package.PhysicalPackaging = pkg.physical_packaging
+		# adding package weight
 		package_weight = shipment.create_wsdl_object_of_type('Weight')
 		package_weight.Units = FedexController.uom_mapper.get(pkg.uom)
 		package_weight.Value = pkg.package_weight
 		package.Weight = package_weight
+		# Adding references as required by label evaluation process
+		for ref, field in {"P_O_NUMBER":"shipment_type", "DEPARTMENT_NUMBER":"octroi_payment_by"}.iteritems():
+			ref_data = shipment.create_wsdl_object_of_type('CustomerReference')
+			ref_data.CustomerReferenceType = ref
+			ref_data.Value = doc.get(field)
+			package.CustomerReferences.append(ref_data)
+		return package
 
-		package.SequenceNumber = pkg_no
-		shipment.RequestedShipment.RequestedPackageLineItems = [package]
-		shipment.RequestedShipment.PackageCount = self.pkg_count
-		
-	@staticmethod	
-	def validate_fedex_shipping_response(shipment, package_id):
+	
+	def validate_fedex_shipping_response(self, shipment, package_id):
 		msg = ''
 		try:
 		    msg = shipment.response.Message
@@ -190,28 +187,27 @@ class FedexController():
 		    pass
 		if shipment.response.HighestSeverity == "SUCCESS":
 		    frappe.msgprint('Shipment is created successfully in Fedex service for package {0}.'.format(package_id))
-		elif shipment.response.HighestSeverity == "NOTE":
-		    frappe.msgprint('Shipment is created in Fedex service with the following note:\n%s' % msg)
-		    for notification in shipment.response.Notifications:
-		        frappe.msgprint('Code: %s, %s' % (notification.Code, notification.Message))
-		elif shipment.response.HighestSeverity == "WARNING":
-		    frappe.msgprint('Shipment is created in Fedex service with the following warning:\n%s' % msg)
-		    for notification in shipment.response.Notifications:
-		        frappe.msgprint('Code: %s, %s' % (notification.Code, notification.Message))
+		elif shipment.response.HighestSeverity in ["NOTE", "WARNING"]:
+		    frappe.msgprint('Shipment is created in Fedex service for package {0} with the following message:\n{1}'.format(package_id, msg))
+		    self.show_notification(shipment)
 		else:  # ERROR, FAILURE
-		    frappe.throw('Creating of Shipment in Fedex service failed.')
-		    for notification in shipment.response.Notifications:
-		        frappe.msgprint('Code: %s, %s' % (notification.Code, notification.Message))
+		    self.show_notification(shipment)
+		    frappe.throw('Creating of Shipment in Fedex service for package {0} failed.'.format(package_id))
 
 	@staticmethod
 	def store_label(shipment, tracking_id, ps_name):
-		label_image_data = base64.b64decode(shipment.response.CompletedShipmentDetail.CompletedPackageDetails[0].Label.Parts[0].Image)
-		save_file('FEDEX-ID-{0}.pdf'.format(tracking_id), label_image_data, "Packing Slip", ps_name) 
+		label_data = base64.b64decode(shipment.response.CompletedShipmentDetail.CompletedPackageDetails[0].Label.Parts[0].Image)
+		FedexController.store_file('FEDEX-ID-{0}.pdf'.format(tracking_id), label_data, ps_name)
+		if hasattr(shipment.response.CompletedShipmentDetail, 'ShipmentDocuments'):
+			inovice_data = base64.b64decode(shipment.response.CompletedShipmentDetail.ShipmentDocuments[0].Parts[0].Image)
+			FedexController.store_file('COMMER-INV-{0}.pdf'.format(ps_name), inovice_data, ps_name)
 
+	@staticmethod
+	def store_file(file_name, image_data, ps_name):
+		save_file(file_name, image_data, "Packing Slip", ps_name)
 
-	@classmethod	
-	def delete_shipment(cls_obj, tracking_id):
-		del_request = FedexDeleteShipmentRequest(cls_obj.CONFIG_OBJ)
+	def delete_shipment(self, tracking_id):
+		del_request = FedexDeleteShipmentRequest(self.config_obj)
 		del_request.DeletionControlType = "DELETE_ALL_PACKAGES"
 		del_request.TrackingId.TrackingNumber = tracking_id
 		del_request.TrackingId.TrackingIdType = 'EXPRESS'
@@ -223,6 +219,86 @@ class FedexController():
 		if del_request.response.HighestSeverity == "SUCCESS":
 			frappe.msgprint('Shipment with tracking number %s is deleted successfully.' % tracking_id)
 		else:
-			for notification in del_request.response.Notifications:
-				frappe.msgprint('Code: %s, %s' % (notification.Code, notification.Message))
-				frappe.throw('Canceling of Shipment in Fedex service failed.')
+			self.show_notification(del_request)
+			frappe.throw('Canceling of Shipment in Fedex service failed.')
+
+
+	def validate_postal_address(self, recipient_address):
+		recipient_details = frappe.db.get_value("Address", recipient_address, "*", as_dict=True)
+
+		inquiry = FedexValidatePostalRequest(self.config_obj)
+		inquiry.Address.PostalCode = recipient_details.get("pincode")
+		inquiry.Address.CountryCode = recipient_details.get("country_code")
+		inquiry.Address.StreetLines = [recipient_details.get("address_line2"),\
+										recipient_details.get("address_line1")]
+		inquiry.Address.City = recipient_details.get("city")
+		inquiry.Address.StateOrProvinceCode = recipient_details.get("state_code")
+		inquiry.send_request()
+		if inquiry.response.HighestSeverity not in ["SUCCESS", "NOTE", "WARNING"]:
+			self.show_notification(inquiry)
+			frappe.throw(_('Recipient Address verification failed.'))
+
+	
+	def schedule_pickup(self, request_data):
+		shipper_details = frappe.db.get_value("Address", request_data.get("shipper_id"), "*", as_dict=True)
+		closing_time = frappe.db.get_value("Company", shipper_details.get("company"), "closing_time")
+		
+		pickup_service = FedexCreatePickupRequest(self.config_obj)
+		pickup_service.OriginDetail.PickupLocation.Contact.PersonName = shipper_details.get("address_title")
+		pickup_service.OriginDetail.PickupLocation.Contact.EMailAddress = shipper_details.get("email_id")
+		pickup_service.OriginDetail.PickupLocation.Contact.CompanyName = shipper_details.get("company")
+		pickup_service.OriginDetail.PickupLocation.Contact.PhoneNumber = shipper_details.get("phone")
+		pickup_service.OriginDetail.PickupLocation.Address.StateOrProvinceCode = shipper_details.get("state_code")
+		pickup_service.OriginDetail.PickupLocation.Address.PostalCode = shipper_details.get("pincode")
+		pickup_service.OriginDetail.PickupLocation.Address.CountryCode = shipper_details.get("country_code")
+		pickup_service.OriginDetail.PickupLocation.Address.StreetLines = [shipper_details.get("address_line1"),\
+																	 shipper_details.get("address_line2")]
+		pickup_service.OriginDetail.PickupLocation.Address.City = shipper_details.get("city")
+		pickup_service.OriginDetail.PickupLocation.Address.Residential = True if shipper_details.get("is_residential_address") \
+																			else False
+		pickup_service.OriginDetail.PackageLocation = 'NONE'
+		pickup_service.OriginDetail.ReadyTimestamp = now_datetime().replace(microsecond=0).isoformat()
+		pickup_service.OriginDetail.CompanyCloseTime = closing_time if closing_time else '20:00:00'
+		pickup_service.CarrierCode = 'FDXE'
+		pickup_service.PackageCount = request_data.get("package_count")
+
+		pickup_service.send_request()
+		if pickup_service.response.HighestSeverity not in ["SUCCESS", "NOTE", "WARNING"]:
+			self.show_notification(pickup_service)
+			frappe.throw(_('Pickup service scheduling failed.'))
+		return pickup_service.response.HighestSeverity
+
+
+	def get_shipment_rate(self, doc):
+		rate_request = FedexRateServiceRequest(self.config_obj)
+		self.set_shipment_details(doc, rate_request)
+		self.set_shipper_info(doc.company_address_name, rate_request)
+		self.set_recipient_info(doc, rate_request)
+		FedexController.set_commodities_info(doc, rate_request)
+		rate_request.RequestedShipment.EdtRequestType = 'NONE'
+
+		for row in doc.fedex_package_details:  
+			package1 = self.set_package_weight(rate_request, row, doc)
+			package1.GroupPackageCount = 1
+			rate_request.add_package(package1)
+
+		self.set_commercial_invoice_info(rate_request, doc)
+		rate_request.send_request()
+		if rate_request.response.HighestSeverity not in ["SUCCESS", "NOTE", "WARNING"]:
+			self.show_notification(rate_request)
+			frappe.throw(_("Error !!! Get shipment rate request failed."))
+		return rate_request
+
+	def show_notification(self, shipment):
+		for notification in shipment.response.Notifications:
+			frappe.msgprint('Code: %s, %s' % (notification.Code, notification.Message))
+
+	
+	def set_commercial_invoice_info(self, shipment, doc):
+		shipment.RequestedShipment.CustomsClearanceDetail.CommercialInvoice.Purpose = doc.shipment_purpose
+		shipment.RequestedShipment.ShippingDocumentSpecification.ShippingDocumentTypes = "COMMERCIAL_INVOICE"
+		shipment.RequestedShipment.ShippingDocumentSpecification.CommercialInvoiceDetail.\
+														Format.ImageType = "PDF"
+		shipment.RequestedShipment.ShippingDocumentSpecification.CommercialInvoiceDetail.\
+														Format.StockType = "PAPER_LETTER"
+

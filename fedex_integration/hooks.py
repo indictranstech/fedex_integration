@@ -70,13 +70,18 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
+fixtures = ["Country", "Property Setter", "Custom Field"]
+
 doc_events = {
 	"Packing Slip":{
-		"validate":["fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.validate_for_package_count",
+		"validate":["fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.validate_for_existing_packing_slip",
+					"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.validate_postal_code", 
+					"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.validate_for_package_count",
 					"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.validate_package_details",
 					"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.update_package_details"],
+		"before_save":["fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.get_fedex_shipment_rate"],
 		"before_submit": ["fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.init_fedex_shipment"]
-	}
+	},
 }
 
 # Scheduled Tasks

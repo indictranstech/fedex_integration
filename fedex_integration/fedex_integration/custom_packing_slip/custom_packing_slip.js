@@ -47,15 +47,7 @@ cur_frm.set_query('weight_uom', 'items', function(doc, cdt, cdn) {
 
 frappe.ui.form.on('Packing Slip', {
 	is_fedex_account: function(frm){
-		frm.toggle_reqd("drop_off_type", frm.doc.is_fedex_account);
-		frm.toggle_reqd("service_type", frm.doc.is_fedex_account);
-		frm.toggle_reqd("packaging_type", frm.doc.is_fedex_account);
-		frm.toggle_reqd("total_handling_units", frm.doc.is_fedex_account);
-		frm.toggle_reqd("shipping_payment_by", frm.doc.is_fedex_account);
-		frm.toggle_reqd("duties_payment_by", frm.doc.is_fedex_account);
-		frm.toggle_reqd("no_of_packages", frm.doc.is_fedex_account);
-		frm.fields_dict.items.grid.toggle_reqd("package_id", frm.doc.is_fedex_account);
-		frm.fields_dict.items.grid.set_column_disp("package_id", frm.doc.is_fedex_account);
+		cur_frm.cscript.enable_fedex_fields(frm);	
 	},
 	shipment_forwarder:function(frm){
 		if (frm.doc.shipment_forwarder == ""){
@@ -92,6 +84,27 @@ frappe.ui.form.on('Packing Slip', {
 			
 		}
 	},
+	refresh:function(frm){
+		if(frm.doc.is_fedex_account){
+			if(frm.doc.docstatus == 1){
+				$(frm.fields_dict.master_tracking_id.wrapper).html(repl("<button class='btn btn-secondary btn-default btn-sm'>\
+					<a  target='_blank' href='https://www.fedex.com/apps/fedextrack/?tracknumbers=%(fedex_id)s&language=en&cntry_code=in'>\
+					Track Shipment</a></button>",{"fedex_id":frm.doc.fedex_tracking_id}));
+				if(!frm.doc.is_pickup_scheduled){
+					cur_frm.add_custom_button(__('Schedule Pickup'),
+						function() { cur_frm.cscript.schedule_pickup(); }, 'icon-retweet', 'btn-default');	
+				}
+			}
+			else{
+				cur_frm.cscript.convert_shipment_amount(frm);
+			}
+
+		}else{
+			$(frm.fields_dict.master_tracking_id.wrapper).html("");
+		}
+		cur_frm.cscript.enable_fedex_fields(frm);
+
+	}
 });
 
 get_package_list = function(){
@@ -102,3 +115,49 @@ get_package_list = function(){
 	return package_ids
 }
 
+cur_frm.cscript.schedule_pickup = function(){
+	frappe.confirm(__("Are you sure you want to schedule pickup?"), function () {
+		frappe.call({
+			freeze:true,
+			freeze_message: __("Scheduling pickup................."),
+			method:"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.schedule_pickup",
+			args:{"request_data":{"fedex_account":cur_frm.doc.shipment_forwarder, "gross_weight":cur_frm.doc.gross_weight_pkg, 
+									"uom":cur_frm.doc.gross_weight_uom, "package_count":cur_frm.doc.no_of_packages,
+									"shipper_id":cur_frm.doc.company_address_name}},
+			callback:function(r){
+			if(r.message == "SUCCESS"){
+					cur_frm.set_value("is_pickup_scheduled", true);
+					cur_frm.save_or_update();
+					frappe.msgprint(__("Pickup service scheduled successfully."));
+				}
+			}
+		})
+	})
+}
+
+cur_frm.cscript.convert_shipment_amount = function(frm){
+	frappe.call({
+		method: "erpnext.setup.utils.get_exchange_rate",
+		args: {
+			from_currency: frm.doc.shipment_currency,
+			to_currency: frm.doc.currency 
+		},
+		callback: function(r, rt) {
+			cur_frm.set_value("base_shipment_amount", flt(frm.doc.shipment_amount * r.message));
+		}
+	})
+	
+}
+
+cur_frm.cscript.enable_fedex_fields = function(frm){
+	var fields = ["drop_off_type", "service_type", "packaging_type", "total_handling_units",
+			"shipping_payment_by", "duties_payment_by", "no_of_packages", "shipment_purpose",
+			"shipment_type", "octroi_payment_by"];
+	$.each(fields, function(i, field){
+		frm.toggle_reqd(field, frm.doc.is_fedex_account);	
+	});
+	frm.toggle_enable("fedex_tracking_id", !frm.doc.is_fedex_account);
+	frm.fields_dict.items.grid.toggle_reqd("package_id", frm.doc.is_fedex_account);
+	frm.fields_dict.items.grid.set_column_disp("package_id", frm.doc.is_fedex_account);
+	frm.fields_dict.items.grid.toggle_reqd("no_of_pieces", frm.doc.is_fedex_account);
+}
