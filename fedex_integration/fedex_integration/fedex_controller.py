@@ -31,7 +31,7 @@ class FedexController():
 								account_number= settings.get("account_no"),
 								meter_number= settings.get("fedex_meter_no"),
 								freight_account_number= "510087020",
-								use_test_server=True)
+								use_test_server=True if settings.get("is_test_account") else False)
 
 	def init_shipment(self, doc):
 		shipment = FedexProcessShipmentRequest(self.config_obj)
@@ -63,6 +63,7 @@ class FedexController():
 
 	def set_shipper_info(self, shipper_id, shipment):
 		shipper_details = frappe.db.get_value("Address", shipper_id, "*", as_dict=True)
+		tin_no = frappe.db.get_value("Company", shipper_details.get("company"), "tin_no")
 		
 		shipment.RequestedShipment.Shipper.AccountNumber = self.config_obj.account_number
 		shipment.RequestedShipment.Shipper.Contact.PersonName = shipper_details.get("address_title")
@@ -76,6 +77,10 @@ class FedexController():
 		shipment.RequestedShipment.Shipper.Address.CountryCode = shipper_details.get("country_code")
 		shipment.RequestedShipment.Shipper.Address.Residential = True if shipper_details.get("is_residential_address") \
 																else False
+		tin_details = shipment.create_wsdl_object_of_type('TaxpayerIdentification')
+		tin_details.TinType.value = "BUSINESS_NATIONAL"
+		tin_details.Number = tin_no
+		shipment.RequestedShipment.Shipper.Tins = [tin_details]
 
 
 
@@ -240,8 +245,7 @@ class FedexController():
 
 	
 	def schedule_pickup(self, request_data):
-		shipper_details = frappe.db.get_value("Address", request_data.get("shipper_id"), "*", as_dict=True)
-		closing_time = frappe.db.get_value("Company", shipper_details.get("company"), "closing_time")
+		shipper_details, closing_time = self.get_company_data(request_data, "closing_time")
 		
 		pickup_service = FedexCreatePickupRequest(self.config_obj)
 		pickup_service.OriginDetail.PickupLocation.Contact.PersonName = shipper_details.get("address_title")
@@ -302,3 +306,8 @@ class FedexController():
 		shipment.RequestedShipment.ShippingDocumentSpecification.CommercialInvoiceDetail.\
 														Format.StockType = "PAPER_LETTER"
 
+	@staticmethod
+	def get_company_data(request_data, field_name):
+		shipper_details = frappe.db.get_value("Address", request_data.get("shipper_id"), "*", as_dict=True)
+		field_value = frappe.db.get_value("Company", shipper_details.get("company"), field_name)
+		return shipper_details, field_value
