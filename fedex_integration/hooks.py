@@ -70,12 +70,12 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-fixtures = ["Country", "Property Setter", "Custom Field", "FedEx Package"]
+fixtures = ["Country", "Property Setter", "Custom Field", "FedEx Package", "UOM"]
 
 doc_events = {
 	"Packing Slip":{
 		"validate":["fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.validate_for_existing_packing_slip",
-					"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.validate_postal_code", 
+					"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.verify_postal_code", 
 					"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.validate_for_package_count",
 					"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.validate_package_details",
 					"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.update_package_details"],

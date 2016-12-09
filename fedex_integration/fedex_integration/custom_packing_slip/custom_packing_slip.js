@@ -25,15 +25,15 @@ cur_frm.set_query('shipping_address_name', function(doc){
 	};
 });
 
-cur_frm.set_query('package_id', 'items', function(doc, cdt, cdn) {
-  	var d  = locals[cdt][cdn];
-  	var package_ids = get_package_list();
-  	return {
-  		filters:{
-  			"name":["in", package_ids]
-  		}
-  	}
-});
+// cur_frm.set_query('package_id', 'items', function(doc, cdt, cdn) {
+//   	var d  = locals[cdt][cdn];
+//   	var package_ids = get_package_list();
+//   	return {
+//   		filters:{
+//   			"name":["in", package_ids]
+//   		}
+//   	}
+// });
 
 cur_frm.set_query('weight_uom', 'items', function(doc, cdt, cdn) {
   	var d  = locals[cdt][cdn];
@@ -73,12 +73,13 @@ frappe.ui.form.on('Packing Slip', {
 					limit_page_length : frm.doc.no_of_packages
 				},
 				callback: function(r) {
-					cur_frm.set_value("fedex_package_details", [])
+					cur_frm.set_value("fedex_package_details", []);
+					cur_frm.set_value("item_packing_details", []);
 					$.each(package_array, function(i, d) {
 						var row = frappe.model.add_child(frm.doc, "FedEx Package Details", "fedex_package_details");
 						row.fedex_package = r.message[i].name;
 					});
-					refresh_field("fedex_package_details");	
+					cur_frm.refresh_field("fedex_package_details");
 				}
 			});
 			
@@ -96,7 +97,7 @@ frappe.ui.form.on('Packing Slip', {
 				}
 			}
 			else{
-				cur_frm.cscript.convert_shipment_amount(frm);
+				// cur_frm.cscript.convert_shipment_amount(frm);
 			}
 
 		}else{
@@ -107,32 +108,37 @@ frappe.ui.form.on('Packing Slip', {
 	}
 });
 
-get_package_list = function(){
-	var package_ids = [];
-	$.each(cur_frm.doc.fedex_package_details, function(i, pkg){
-		package_ids.push(pkg.fedex_package);
+get_entity_list = function(child_table, field_name){
+	var entity_ids = [];
+	$.each(cur_frm.doc[child_table], function(i, pkg){
+		entity_ids.push(pkg[field_name]);
 	})
-	return package_ids
+	return entity_ids
 }
 
 cur_frm.cscript.schedule_pickup = function(){
-	frappe.confirm(__("Are you sure you want to schedule pickup?"), function () {
-		frappe.call({
-			freeze:true,
-			freeze_message: __("Scheduling pickup................."),
-			method:"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.schedule_pickup",
-			args:{"request_data":{"fedex_account":cur_frm.doc.shipment_forwarder, "gross_weight":cur_frm.doc.gross_weight_pkg, 
-									"uom":cur_frm.doc.gross_weight_uom, "package_count":cur_frm.doc.no_of_packages,
-									"shipper_id":cur_frm.doc.company_address_name}},
-			callback:function(r){
-			if(r.message == "SUCCESS"){
-					cur_frm.set_value("is_pickup_scheduled", true);
-					cur_frm.save_or_update();
-					frappe.msgprint(__("Pickup service scheduled successfully."));
-				}
-			}
-		})
-	})
+	frappe.prompt(
+			[
+				{fieldtype:'Datetime', fieldname:'ready_time', label: __('Package Ready Time'), 'reqd':1},
+			],
+			function(data){
+				frappe.call({
+					freeze:true,
+					freeze_message: __("Scheduling pickup................."),
+					method:"fedex_integration.fedex_integration.custom_packing_slip.custom_packing_slip.schedule_pickup",
+					args:{"request_data":{"fedex_account":cur_frm.doc.shipment_forwarder, "gross_weight":cur_frm.doc.gross_weight_pkg, 
+											"uom":cur_frm.doc.gross_weight_uom, "package_count":cur_frm.doc.no_of_packages,
+											"shipper_id":cur_frm.doc.company_address_name, "ready_time":data.ready_time}},
+					callback:function(r){
+					if(r.message == "SUCCESS"){
+							cur_frm.set_value("is_pickup_scheduled", true);
+							cur_frm.save_or_update();
+							frappe.msgprint(__("Pickup service scheduled successfully."));
+						}
+					}
+				})
+			},
+			__("Schedule pickup ?"), __("Yes"));
 }
 
 cur_frm.cscript.convert_shipment_amount = function(frm){
@@ -157,7 +163,64 @@ cur_frm.cscript.enable_fedex_fields = function(frm){
 		frm.toggle_reqd(field, frm.doc.is_fedex_account);	
 	});
 	frm.toggle_enable("fedex_tracking_id", !frm.doc.is_fedex_account);
-	frm.fields_dict.items.grid.toggle_reqd("package_id", frm.doc.is_fedex_account);
-	frm.fields_dict.items.grid.set_column_disp("package_id", frm.doc.is_fedex_account);
-	frm.fields_dict.items.grid.toggle_reqd("no_of_pieces", frm.doc.is_fedex_account);
+	// frm.fields_dict.items.grid.toggle_reqd("package_id", frm.doc.is_fedex_account);
+	// frm.fields_dict.items.grid.set_column_disp("package_id", frm.doc.is_fedex_account);
+	// frm.fields_dict.items.grid.toggle_reqd("no_of_pieces", frm.doc.is_fedex_account);
+}
+
+
+cur_frm.set_query('weight_uom', 'items', function(doc, cdt, cdn) {
+	var d  = locals[cdt][cdn];
+	var filter_value = doc.is_fedex_account ? ["in", ["LB", "Kg"]] : ["not in", [""]];
+	return {
+		filters:{
+			"name": filter_value
+		}
+	}
+});
+
+
+cur_frm.set_query('fedex_package', 'item_packing_details', function(doc, cdt, cdn) {
+	var d  = locals[cdt][cdn];
+	var package_ids = get_entity_list("fedex_package_details", "fedex_package");
+	return {
+		filters:{
+			"name":["in", package_ids]
+		}
+	}
+});
+
+cur_frm.set_query('item_code', 'item_packing_details', function(doc, cdt, cdn) {
+	var d  = locals[cdt][cdn];
+	var items = get_entity_list("items", "item_code");
+	return {
+		filters:{
+			"name":["in", items]
+		}
+	}
+});
+
+frappe.ui.form.on("Packing Slip Item", "rate", function(frm, cdt, cdn){
+	var row = locals[cdt][cdn];
+	frappe.model.set_value(row.doctype, row.name, "amount", flt(row.rate) * flt(row.qty));
+})
+
+frappe.ui.form.on("Packing Slip Item", "qty", function(frm, cdt, cdn){
+	var row = locals[cdt][cdn];
+	frappe.model.set_value(row.doctype, row.name, "amount", flt(row.rate) * flt(row.qty));
+})
+
+cur_frm.cscript.get_items = function(doc, cdt, cdn) {
+	this.frm.call({
+		doc: this.frm.doc,
+		method: "get_items",
+		callback: function(r) {
+			if(!r.exc){
+				cur_frm.set_value("fedex_package_details", []);
+				cur_frm.set_value("item_packing_details", []);
+				cur_frm.set_value("no_of_packages", "");
+				cur_frm.refresh_fields();
+			}
+		}
+	});
 }

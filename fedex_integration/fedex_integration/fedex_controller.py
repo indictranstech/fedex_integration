@@ -261,7 +261,7 @@ class FedexController():
 		pickup_service.OriginDetail.PickupLocation.Address.Residential = True if shipper_details.get("is_residential_address") \
 																			else False
 		pickup_service.OriginDetail.PackageLocation = 'NONE'
-		pickup_service.OriginDetail.ReadyTimestamp = now_datetime().replace(microsecond=0).isoformat()
+		pickup_service.OriginDetail.ReadyTimestamp = get_datetime(request_data.get("ready_time")).replace(microsecond=0).isoformat()
 		pickup_service.OriginDetail.CompanyCloseTime = closing_time if closing_time else '20:00:00'
 		pickup_service.CarrierCode = 'FDXE'
 		pickup_service.PackageCount = request_data.get("package_count")

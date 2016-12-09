@@ -1,0 +1,98 @@
+[
+ {
+  "docstatus": 0, 
+  "doctype": "UOM", 
+  "modified": "2016-10-18 14:41:32.586143", 
+  "must_be_whole_number": 1, 
+  "name": "Unit", 
+  "uom_name": "Unit"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "UOM", 
+  "modified": "2016-10-18 14:41:32.642822", 
+  "must_be_whole_number": 1, 
+  "name": "Box", 
+  "uom_name": "Box"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "UOM", 
+  "modified": "2016-10-18 14:41:32.777336", 
+  "must_be_whole_number": 0, 
+  "name": "Kg", 
+  "uom_name": "Kg"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "UOM", 
+  "modified": "2016-10-18 14:41:32.780752", 
+  "must_be_whole_number": 0, 
+  "name": "Meter", 
+  "uom_name": "Meter"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "UOM", 
+  "modified": "2016-10-18 14:41:32.783696", 
+  "must_be_whole_number": 0, 
+  "name": "Litre", 
+  "uom_name": "Litre"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "UOM", 
+  "modified": "2016-10-18 14:41:32.786364", 
+  "must_be_whole_number": 0, 
+  "name": "Gram", 
+  "uom_name": "Gram"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "UOM", 
+  "modified": "2016-10-18 14:41:32.790103", 
+  "must_be_whole_number": 1, 
+  "name": "Nos", 
+  "uom_name": "Nos"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "UOM", 
+  "modified": "2016-10-18 14:41:32.793674", 
+  "must_be_whole_number": 1, 
+  "name": "Pair", 
+  "uom_name": "Pair"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "UOM", 
+  "modified": "2016-10-18 14:41:32.796597", 
+  "must_be_whole_number": 1, 
+  "name": "Set", 
+  "uom_name": "Set"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "UOM", 
+  "modified": "2016-10-18 14:41:32.804116", 
+  "must_be_whole_number": 0, 
+  "name": "Hour", 
+  "uom_name": "Hour"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "UOM", 
+  "modified": "2016-10-18 14:41:32.809177", 
+  "must_be_whole_number": 0, 
+  "name": "Minute", 
+  "uom_name": "Minute"
+ }, 
+ {
+  "docstatus": 0, 
+  "doctype": "UOM", 
+  "modified": "2016-11-07 16:52:50.956495", 
+  "must_be_whole_number": 0, 
+  "name": "LB", 
+  "uom_name": "LB"
+ }
+]

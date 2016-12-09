@@ -12,6 +12,7 @@ from frappe.utils.file_manager import save_file
 from fedex.services.track_service import FedexTrackRequest
 from fedex_integration.fedex_integration.fedex_controller import FedexController
 from collections import defaultdict
+from erpnext.setup.utils import get_exchange_rate
 
 
 uom_mapper = {"Kg":"KG", "LB":"LB"}
@@ -23,17 +24,24 @@ def validate_for_package_count(doc, method):
 
 def validate_package_details(doc, method):
 	if doc.is_fedex_account:
-		item_package_ids = [row.package_id for row in doc.items]
+		item_packing_dict, item_package_ids, package_wt, no_of_pieces, total_qty = get_item_packing_dict(doc)
+		qty_dict = {row.item_code:row.qty for row in doc.items}
 		package_ids = []
 		for row in doc.fedex_package_details:
 			if row.fedex_package not in item_package_ids:
 				frappe.throw(_("Package {0} not linked to any item".format(row.fedex_package)))
 			package_ids.append(row.fedex_package)
-		for row in doc.items:
-			if row.package_id not in package_ids:
-				frappe.throw(_("Package {0} linked to item {1} in row {2} not found in \
-									FEDEX PACKING DETAILS table".format(row.package_id, row.item_code, row.idx)))
 
+		packed_items = item_packing_dict.keys()
+		for row in doc.items:
+			if row.item_code not in packed_items:
+				frappe.throw(_("Item {0} in row {1} not found in Item Packing Details \
+					table".format(row.item_code, row.idx)))
+			if row.qty != item_packing_dict.get(row.item_code, 0):
+				frappe.throw(_("Item {0} quantity {1} is not equal to quantity {2} mentioned in\
+					Item Packing Details table.".format(row.item_code, flt(row.qty), item_packing_dict.get(row.item_code, 0))))
+
+		set_net_weight_of_package(doc)
 
 def init_fedex_shipment(doc, method):
 	if doc.is_fedex_account and doc.no_of_packages:
@@ -73,19 +81,19 @@ def update_shipment_rate(shipment, doc):
 				    "shipment_currency": cstr(shipment_rate_detail.TotalNetCharge.Currency)
 				})
 				break
+		set_base_shipment_amount(doc)
 	except Exception as ex:
 		frappe.msgprint('Cannot update Total Amount: %s' % cstr(ex))
 
 def update_package_details(doc, method):
 	if doc.is_fedex_account:
-		pkg_wt = defaultdict(float)
-		total_qty = 0
-		for row in doc.items:
-			pkg_wt[row.package_id] += row.qty * row.net_weight
-			total_qty += row.qty
+		item_packing_dict, item_package_ids, package_wt, no_of_pieces, total_qty = get_item_packing_dict(doc)
 		doc.total_handling_units = cint(total_qty)
+		for row in doc.items:
+			row.no_of_pieces = len(no_of_pieces.get(row.item_code))
+
 		for row in doc.fedex_package_details:
-			row.package_weight = pkg_wt.get(row.fedex_package, 0)
+			row.package_weight = package_wt.get(row.fedex_package, 0)
 			row.uom = doc.gross_weight_uom
 
 
@@ -129,6 +137,12 @@ def set_shipment_rate(doc, rate_request):
 		for rate_detail in service.RatedShipmentDetails:
 			doc.shipment_currency = rate_detail.ShipmentRateDetail.TotalNetFedExCharge.Currency
 			doc.shipment_amount = rate_detail.ShipmentRateDetail.TotalNetFedExCharge.Amount
+	set_base_shipment_amount(doc)
+
+
+def set_base_shipment_amount(doc):
+	exchange_rate = get_exchange_rate(doc.shipment_currency, doc.currency)
+	doc.base_shipment_amount = flt(doc.shipment_amount) * flt(exchange_rate)
 
 
 def validate_for_existing_packing_slip(doc, method):
@@ -162,3 +176,29 @@ def warehouse_query(doctype, txt, searchfield, start, page_len, filters):
 def write_response_to_file(file_name, response):
 	with open(file_name, "w") as fi:
 		fi.write(response)
+
+
+def verify_postal_code(doc, method):
+	pass
+
+
+def get_item_packing_dict(doc):
+	item_packing_dict = defaultdict(float)
+	package_wt = defaultdict(float)
+	no_of_pieces = defaultdict(set)
+	item_package_ids = set()
+	total_qty = 0
+	for row in doc.item_packing_details:
+		item_packing_dict[row.item_code] += row.qty
+		package_wt[row.fedex_package] += flt(row.qty) * flt(row.net_weight)
+		no_of_pieces[row.item_code].add(row.fedex_package)
+		item_package_ids.add(row.fedex_package)
+		total_qty += row.qty
+	return item_packing_dict, item_package_ids, package_wt, no_of_pieces, total_qty
+
+
+def set_net_weight_of_package(doc):
+	item_wt = {row.item_code:row.net_weight for row in doc.items}
+	for row in doc.item_packing_details:
+		row.net_weight = item_wt.get(row.item_code, 0)
+
