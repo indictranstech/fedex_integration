@@ -1353,7 +1353,7 @@
   "doctype": "Property Setter", 
   "doctype_or_field": "DocType", 
   "field_name": null, 
-  "modified": "2016-12-09 19:45:35.700168", 
+  "modified": "2016-12-10 16:10:48.312879", 
   "name": "Packing Slip-read_only_onload", 
   "property": "read_only_onload", 
   "property_type": "Check", 

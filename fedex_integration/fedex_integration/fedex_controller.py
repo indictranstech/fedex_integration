@@ -77,6 +77,8 @@ class FedexController():
 		shipment.RequestedShipment.Shipper.Address.CountryCode = shipper_details.get("country_code")
 		shipment.RequestedShipment.Shipper.Address.Residential = True if shipper_details.get("is_residential_address") \
 																else False
+		if not tin_no:
+			raise frappe.ValidationError("Please set TIN no in company {0}".format(shipper_details.get("company")))
 		tin_details = shipment.create_wsdl_object_of_type('TaxpayerIdentification')
 		tin_details.TinType.value = "BUSINESS_NATIONAL"
 		tin_details.Number = tin_no
@@ -132,6 +134,7 @@ class FedexController():
 	
 	@staticmethod
 	def set_commodities_info(doc, shipment):
+		total_value = 0.0
 		for row in doc.items:
 			commodity_dict = {
 				"Name":row.get("item_code"),
@@ -145,9 +148,11 @@ class FedexController():
 				"UnitPrice":{"Currency":doc.currency, "Amount":row.rate},
 				"CustomsValue":{"Currency":doc.currency, "Amount":row.amount}
 			}
+			total_value += row.amount
 			shipment.RequestedShipment.CustomsClearanceDetail.Commodities.append(commodity_dict)
-		shipment.RequestedShipment.CustomsClearanceDetail.CustomsValue.Amount = doc.total
+		shipment.RequestedShipment.CustomsClearanceDetail.CustomsValue.Amount = total_value
 		shipment.RequestedShipment.CustomsClearanceDetail.CustomsValue.Currency = doc.currency
+		doc.total = total_value
 
 	
 	def set_package_data(self, pkg, shipment, pkg_no, doc):
