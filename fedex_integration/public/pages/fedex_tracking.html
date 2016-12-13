@@ -1,0 +1,6 @@
+<strong>FedEx Tracking IDs</strong>
+<br>
+{% for(var i=0, l=tracking_ids.length; i < l; i++) { %}
+<a target="_blank" href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{ tracking_ids[i].fedex_tracking_id }}&language=en&cntry_code=in">{{ tracking_ids[i].fedex_tracking_id }}</a>
+<br>
+{% } %}

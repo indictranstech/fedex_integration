@@ -36,11 +36,12 @@ class FedexController():
 	def init_shipment(self, doc):
 		shipment = FedexProcessShipmentRequest(self.config_obj)
 		self.set_shipment_details(doc, shipment)
-		self.set_shipper_info(doc.company_address_name, shipment)
-		self.set_recipient_info(doc, shipment)
+		shipper_details = self.set_shipper_info(doc.company_address_name, shipment)
+		recipient_details = self.set_recipient_info(doc, shipment)
 		FedexController.set_fedex_label_info(shipment)
 		FedexController.set_commodities_info(doc, shipment)
 		self.set_commercial_invoice_info(shipment, doc)
+		self.set_email_notification(shipment, doc, shipper_details, recipient_details)
 		self.pkg_count = doc.no_of_packages
 		return shipment
 
@@ -63,6 +64,7 @@ class FedexController():
 
 	def set_shipper_info(self, shipper_id, shipment):
 		shipper_details = frappe.db.get_value("Address", shipper_id, "*", as_dict=True)
+		self.validate_address(shipper_details)
 		tin_no = frappe.db.get_value("Company", shipper_details.get("company"), "tin_no")
 		
 		shipment.RequestedShipment.Shipper.AccountNumber = self.config_obj.account_number
@@ -83,12 +85,13 @@ class FedexController():
 		tin_details.TinType.value = "BUSINESS_NATIONAL"
 		tin_details.Number = tin_no
 		shipment.RequestedShipment.Shipper.Tins = [tin_details]
+		return shipper_details
 
 
 
 	def set_recipient_info(self, doc, shipment):
 		recipient_details = frappe.db.get_value("Address", doc.shipping_address_name, "*", as_dict=True)
-		
+		self.validate_address(recipient_details)
 		shipment.RequestedShipment.Recipient.Contact.PersonName = recipient_details.get("address_title")
 		shipment.RequestedShipment.Recipient.Contact.CompanyName = recipient_details.get("address_title")
 		shipment.RequestedShipment.Recipient.Contact.PhoneNumber = recipient_details.get("phone")
@@ -102,7 +105,7 @@ class FedexController():
 		# This is needed to ensure an accurate rate quote with the response.
 		shipment.RequestedShipment.Recipient.Address.Residential = True if recipient_details.get("is_residential_address") else False
 		shipment.RequestedShipment.FreightShipmentDetail.TotalHandlingUnits = doc.total_handling_units
-
+		return recipient_details
 	    
 
 	def set_biller_info(self, billing_address, shipment):
@@ -271,11 +274,19 @@ class FedexController():
 		pickup_service.CarrierCode = 'FDXE'
 		pickup_service.PackageCount = request_data.get("package_count")
 
+		package_weight = pickup_service.create_wsdl_object_of_type('Weight')
+		package_weight.Units = FedexController.uom_mapper.get(request_data.get("uom"))
+		package_weight.Value = request_data.get("gross_weight")
+		pickup_service.TotalWeight = package_weight
+
 		pickup_service.send_request()
 		if pickup_service.response.HighestSeverity not in ["SUCCESS", "NOTE", "WARNING"]:
 			self.show_notification(pickup_service)
 			frappe.throw(_('Pickup service scheduling failed.'))
-		return pickup_service.response.HighestSeverity
+		return { "response": pickup_service.response.HighestSeverity,
+				  "pickup_id": pickup_service.response.PickupConfirmationNumber,
+				  "location_no": pickup_service.response.Location
+				}
 
 
 	def get_shipment_rate(self, doc):
@@ -316,3 +327,26 @@ class FedexController():
 		shipper_details = frappe.db.get_value("Address", request_data.get("shipper_id"), "*", as_dict=True)
 		field_value = frappe.db.get_value("Company", shipper_details.get("company"), field_name)
 		return shipper_details, field_value
+
+	def set_email_notification(self, shipment, doc, shipper_details, recipient_details):
+		print "set email notification"
+		shipment.RequestedShipment.SpecialServicesRequested.EMailNotificationDetail.AggregationType = "PER_SHIPMENT"
+		notify_mapper = {"Sender":"SHIPPER", "Recipient":"RECIPIENT"}
+		email_id_mapper = {"Sender":shipper_details, "Recipient":recipient_details}
+		for row in doc.fedex_notification:
+			notify_dict = {
+				"EMailNotificationRecipientType":notify_mapper.get(row.notify_to, "SHIPPER"),
+				"EMailAddress":email_id_mapper.get(row.notify_to).get("email_id", ""),
+				"NotificationEventsRequested":[ fedex_event for event, fedex_event in {"shipment":"ON_SHIPMENT", "delivery":"ON_DELIVERY", \
+													"tendered":"ON_TENDER", "exception":"ON_EXCEPTION"}.items() if row.get(event)],
+				"Format":"HTML",
+				"Localization":{"LanguageCode":"EN", \
+								"LocaleCode":email_id_mapper.get(row.notify_to).get("country_code", "")}
+			}
+			shipment.RequestedShipment.SpecialServicesRequested.EMailNotificationDetail.Recipients.append(notify_dict)
+
+	def validate_address(self, address):
+		for field, label in {"country":"Country", "country_code":"Country Code", "pincode":"Pin Code", \
+						"phone":"Phone", "email_id":"Email ID", "city":"City", "address_line1":"Address Lines"}.items():
+			if not address.get(field):
+				raise frappe.ValidationError("Please specify {1} in Address {0}".format(address.get("name"), label))

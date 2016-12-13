@@ -18,30 +18,31 @@ from erpnext.setup.utils import get_exchange_rate
 uom_mapper = {"Kg":"KG", "LB":"LB"}
 
 def validate_for_package_count(doc, method):
-	if doc.is_fedex_account and doc.no_of_packages != len(doc.fedex_package_details):
-		frappe.throw(_("No of Packages must be equal to FEDEX PACKING DETAILS table"))
+	if doc.no_of_packages != len(doc.fedex_package_details):
+		frappe.throw(_("No of Packages must be equal to PACKAGE DETAILS table"))
 
 
 def validate_package_details(doc, method):
+	item_packing_dict, item_package_ids, package_wt, no_of_pieces, total_qty = get_item_packing_dict(doc)
+	qty_dict = {row.item_code:row.qty for row in doc.items}
+	package_ids = []
+	for row in doc.fedex_package_details:
+		if row.fedex_package not in item_package_ids:
+			frappe.throw(_("Package {0} not linked to any item".format(row.fedex_package)))
+		package_ids.append(row.fedex_package)
+
+	packed_items = item_packing_dict.keys()
+	for row in doc.items:
+		if row.item_code not in packed_items:
+			frappe.throw(_("Item {0} in row {1} not found in Item Packing Details \
+				table".format(row.item_code, row.idx)))
+		if row.qty != item_packing_dict.get(row.item_code, 0):
+			frappe.throw(_("Item {0} quantity {1} is not equal to quantity {2} mentioned in\
+				Item Packing Details table.".format(row.item_code, flt(row.qty), item_packing_dict.get(row.item_code, 0))))
+
+	set_net_weight_of_package(doc)
 	if doc.is_fedex_account:
-		item_packing_dict, item_package_ids, package_wt, no_of_pieces, total_qty = get_item_packing_dict(doc)
-		qty_dict = {row.item_code:row.qty for row in doc.items}
-		package_ids = []
-		for row in doc.fedex_package_details:
-			if row.fedex_package not in item_package_ids:
-				frappe.throw(_("Package {0} not linked to any item".format(row.fedex_package)))
-			package_ids.append(row.fedex_package)
-
-		packed_items = item_packing_dict.keys()
-		for row in doc.items:
-			if row.item_code not in packed_items:
-				frappe.throw(_("Item {0} in row {1} not found in Item Packing Details \
-					table".format(row.item_code, row.idx)))
-			if row.qty != item_packing_dict.get(row.item_code, 0):
-				frappe.throw(_("Item {0} quantity {1} is not equal to quantity {2} mentioned in\
-					Item Packing Details table.".format(row.item_code, flt(row.qty), item_packing_dict.get(row.item_code, 0))))
-
-		set_net_weight_of_package(doc)
+		validate_for_email_notification(doc)
 
 def init_fedex_shipment(doc, method):
 	if doc.is_fedex_account and doc.no_of_packages:
@@ -86,15 +87,14 @@ def update_shipment_rate(shipment, doc):
 		frappe.msgprint('Cannot update Total Amount: %s' % cstr(ex))
 
 def update_package_details(doc, method):
-	if doc.is_fedex_account:
-		item_packing_dict, item_package_ids, package_wt, no_of_pieces, total_qty = get_item_packing_dict(doc)
-		doc.total_handling_units = cint(total_qty)
-		for row in doc.items:
-			row.no_of_pieces = len(no_of_pieces.get(row.item_code))
+	item_packing_dict, item_package_ids, package_wt, no_of_pieces, total_qty = get_item_packing_dict(doc)
+	doc.total_handling_units = cint(total_qty)
+	for row in doc.items:
+		row.no_of_pieces = len(no_of_pieces.get(row.item_code))
 
-		for row in doc.fedex_package_details:
-			row.package_weight = package_wt.get(row.fedex_package, 0)
-			row.uom = doc.gross_weight_uom
+	for row in doc.fedex_package_details:
+		row.package_weight = package_wt.get(row.fedex_package, 0)
+		row.uom = doc.gross_weight_uom
 
 
 def set_package_details(pkg, shipment_response, tracking_id):
@@ -118,7 +118,6 @@ def schedule_pickup(request_data):
 		response = fedex.schedule_pickup(request_data)
 		return response
 	except Exception,e:
-		print frappe.get_traceback()
 		frappe.throw(cstr(e))
 
 
@@ -205,4 +204,15 @@ def set_net_weight_of_package(doc):
 	item_wt = {row.item_code:row.net_weight for row in doc.items}
 	for row in doc.item_packing_details:
 		row.net_weight = item_wt.get(row.item_code, 0)
+
+def validate_for_email_notification(doc):
+	notify_list = []
+	for row in doc.fedex_notification:
+		if row.notify_to in notify_list:
+			frappe.throw(_("In FedEx Notification table, duplicate entry of {0} not allowed.".format(row.notify_to)))
+		notify_list.append(row.notify_to)
+		if not any([row.shipment, row.delivery, row.tendered, row.exception]):
+			frappe.throw(_("Please check any one notification type \
+							in FedEx Notification table in row {0}".format(row.idx)))
+
 

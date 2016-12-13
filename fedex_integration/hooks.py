@@ -16,7 +16,7 @@ app_license = "MIT"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/fedex_integration/css/fedex_integration.css"
-# app_include_js = "/assets/fedex_integration/js/fedex_integration.js"
+app_include_js = "/assets/js/fedex.min.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/fedex_integration/css/fedex_integration.css"
@@ -70,7 +70,7 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-fixtures = ["Country", "Property Setter", "Custom Field", "FedEx Package", "UOM", "FedEx Postal Code"]
+fixtures = ["Country", "Property Setter", "Custom Field", "FedEx Package", "UOM"]
 
 doc_events = {
 	"Packing Slip":{

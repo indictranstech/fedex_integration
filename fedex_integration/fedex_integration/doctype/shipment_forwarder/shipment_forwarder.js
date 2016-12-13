@@ -7,5 +7,8 @@ frappe.ui.form.on('Shipment Forwarder', {
 		frm.toggle_reqd("fedex_meter_no", frm.doc.is_fedex_account);
 		frm.toggle_reqd("fedex_key", frm.doc.is_fedex_account);
 		frm.toggle_reqd("password", frm.doc.is_fedex_account);
+	},
+	shipment_forwarder: function(frm){
+		frm.set_value("title", frm.doc.shipment_forwarder);
 	}
 });
