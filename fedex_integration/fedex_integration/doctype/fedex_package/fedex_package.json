@@ -50,7 +50,7 @@
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
- "modified": "2016-12-13 14:36:21.108130", 
+ "modified": "2016-12-14 18:34:21.595284", 
  "modified_by": "Administrator", 
  "module": "fedex_integration", 
  "name": "FedEx Package", 
@@ -103,7 +103,7 @@
  "quick_entry": 1, 
  "read_only": 0, 
  "read_only_onload": 0, 
- "sort_field": "modified", 
- "sort_order": "DESC", 
+ "sort_field": "creation", 
+ "sort_order": "ASC", 
  "track_seen": 0
 }
