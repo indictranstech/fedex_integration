@@ -329,21 +329,21 @@ class FedexController():
 		return shipper_details, field_value
 
 	def set_email_notification(self, shipment, doc, shipper_details, recipient_details):
-		print "set email notification"
-		shipment.RequestedShipment.SpecialServicesRequested.EMailNotificationDetail.AggregationType = "PER_SHIPMENT"
-		notify_mapper = {"Sender":"SHIPPER", "Recipient":"RECIPIENT"}
-		email_id_mapper = {"Sender":shipper_details, "Recipient":recipient_details}
-		for row in doc.fedex_notification:
-			notify_dict = {
-				"EMailNotificationRecipientType":notify_mapper.get(row.notify_to, "SHIPPER"),
-				"EMailAddress":email_id_mapper.get(row.notify_to).get("email_id", ""),
-				"NotificationEventsRequested":[ fedex_event for event, fedex_event in {"shipment":"ON_SHIPMENT", "delivery":"ON_DELIVERY", \
-													"tendered":"ON_TENDER", "exception":"ON_EXCEPTION"}.items() if row.get(event)],
-				"Format":"HTML",
-				"Localization":{"LanguageCode":"EN", \
-								"LocaleCode":email_id_mapper.get(row.notify_to).get("country_code", "")}
-			}
-			shipment.RequestedShipment.SpecialServicesRequested.EMailNotificationDetail.Recipients.append(notify_dict)
+		if doc.fedex_notification:
+			shipment.RequestedShipment.SpecialServicesRequested.EMailNotificationDetail.AggregationType = "PER_SHIPMENT"
+			notify_mapper = {"Sender":"SHIPPER", "Recipient":"RECIPIENT"}
+			email_id_mapper = {"Sender":shipper_details, "Recipient":recipient_details}
+			for row in doc.fedex_notification:
+				notify_dict = {
+					"EMailNotificationRecipientType":notify_mapper.get(row.notify_to, "SHIPPER"),
+					"EMailAddress":email_id_mapper.get(row.notify_to).get("email_id", ""),
+					"NotificationEventsRequested":[ fedex_event for event, fedex_event in {"shipment":"ON_SHIPMENT", "delivery":"ON_DELIVERY", \
+														"tendered":"ON_TENDER", "exception":"ON_EXCEPTION"}.items() if row.get(event)],
+					"Format":"HTML",
+					"Localization":{"LanguageCode":"EN", \
+									"LocaleCode":email_id_mapper.get(row.notify_to).get("country_code", "")}
+				}
+				shipment.RequestedShipment.SpecialServicesRequested.EMailNotificationDetail.Recipients.append(notify_dict)
 
 	def validate_address(self, address):
 		for field, label in {"country":"Country", "country_code":"Country Code", "pincode":"Pin Code", \

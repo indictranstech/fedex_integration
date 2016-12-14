@@ -209,6 +209,7 @@ frappe.ui.form.on("Packing Slip Item", "rate", function(frm, cdt, cdn){
 frappe.ui.form.on("Packing Slip Item", "qty", function(frm, cdt, cdn){
 	var row = locals[cdt][cdn];
 	frappe.model.set_value(row.doctype, row.name, "amount", flt(row.rate) * flt(row.qty));
+	frappe.model.set_value(row.doctype, row.name, "total_weight", flt(row.net_weight) * flt(row.qty));
 })
 
 cur_frm.cscript.get_items = function(doc, cdt, cdn) {
@@ -241,3 +242,17 @@ cur_frm.cscript.set_box_uom = function(frm){
 		frappe.model.set_value(row.doctype, row.name, "unit", mapper[frm.doc.uom] || "");
 	});
 }
+
+frappe.ui.form.on("FedEx Notification",{
+	select_all:function(frm ,cdt,cdn){
+		var row = locals[cdt][cdn];
+		$.each(["shipment", "tendered", "exception", "delivery"], function(index, field) {
+			frappe.model.set_value(row.doctype, row.name, field, row.select_all);
+		})
+	}
+})
+
+frappe.ui.form.on("Packing Slip Item", "net_weight", function(frm, cdt, cdn){
+	var row = locals[cdt][cdn];
+	frappe.model.set_value(row.doctype, row.name, "total_weight", flt(row.net_weight) * flt(row.qty));
+})
