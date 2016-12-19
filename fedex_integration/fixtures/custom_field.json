@@ -774,7 +774,7 @@
   "collapsible": 0, 
   "collapsible_depends_on": null, 
   "default": null, 
-  "depends_on": null, 
+  "depends_on": "is_fedex_account", 
   "description": null, 
   "docstatus": 0, 
   "doctype": "Custom Field", 

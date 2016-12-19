@@ -331,17 +331,19 @@ class FedexController():
 	def set_email_notification(self, shipment, doc, shipper_details, recipient_details):
 		if doc.fedex_notification:
 			shipment.RequestedShipment.SpecialServicesRequested.EMailNotificationDetail.AggregationType = "PER_SHIPMENT"
-			notify_mapper = {"Sender":"SHIPPER", "Recipient":"RECIPIENT"}
-			email_id_mapper = {"Sender":shipper_details, "Recipient":recipient_details}
+			notify_mapper = {"Sender":"SHIPPER", "Recipient":"RECIPIENT", "Other-1":"OTHER", \
+								"Other-2":"OTHER", "Other-3":"OTHER"}
+			email_id_mapper = {"Sender":shipper_details, "Recipient":recipient_details, "Other-1":{}, \
+								"Other-2":{}, "Other-3":{} }
 			for row in doc.fedex_notification:
 				notify_dict = {
 					"EMailNotificationRecipientType":notify_mapper.get(row.notify_to, "SHIPPER"),
-					"EMailAddress":email_id_mapper.get(row.notify_to).get("email_id", ""),
+					"EMailAddress":email_id_mapper.get(row.notify_to, {}).get("email_id", row.email_id or ""),
 					"NotificationEventsRequested":[ fedex_event for event, fedex_event in {"shipment":"ON_SHIPMENT", "delivery":"ON_DELIVERY", \
 														"tendered":"ON_TENDER", "exception":"ON_EXCEPTION"}.items() if row.get(event)],
 					"Format":"HTML",
 					"Localization":{"LanguageCode":"EN", \
-									"LocaleCode":email_id_mapper.get(row.notify_to).get("country_code", "")}
+									"LocaleCode":email_id_mapper.get(row.notify_to, {}).get("country_code", "IN")}
 				}
 				shipment.RequestedShipment.SpecialServicesRequested.EMailNotificationDetail.Recipients.append(notify_dict)
 

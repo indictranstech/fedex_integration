@@ -67,12 +67,17 @@ frappe.ui.form.on('Packing Slip', {
 				callback: function(r) {
 					cur_frm.set_value("fedex_package_details", []);
 					cur_frm.set_value("item_packing_details", []);
-					$.each(package_array, function(i, d) {
-						var row = frappe.model.add_child(frm.doc, "FedEx Package Details", "fedex_package_details");
-						row.fedex_package = r.message[i].name;
-					});
-					cur_frm.refresh_field("fedex_package_details");
-					cur_frm.cscript.set_package_uom(frm);
+					if (r.message.length == frm.doc.no_of_packages){
+						$.each(package_array, function(i, d) {
+							var row = frappe.model.add_child(frm.doc, "FedEx Package Details", "fedex_package_details");
+							row.fedex_package = r.message[i].name;
+						});
+						cur_frm.refresh_field("fedex_package_details");
+						cur_frm.cscript.set_package_uom(frm);
+					}else{
+						frappe.msgprint(__(repl("%(pkg_no)s Packages not found in FedEx Package master.\
+												Please add packages in master & try again.", {"pkg_no":frm.doc.no_of_packages})));
+					}
 				}
 			});
 			
@@ -97,21 +102,23 @@ frappe.ui.form.on('Packing Slip', {
 	},
 	set_kg:function(frm){
 		if (frm.doc.set_kg){
-			cur_frm.cscript.set_box_uom(frm, "CM");
-			cur_frm.cscript.set_item_weight_uom("Kg");
-			cur_frm.set_value("set_lb", 0);
-			cur_frm.cscript.set_gross_wt_uom(frm, "Kg");
-			// cur_frm.cscript.change_grid_labels("Unit Weight (Kg)");
+			cur_frm.events.init_weight_uom_change_process(frm, "Kg", "CM", "set_lb");
 		}
 	},
 	set_lb:function(frm){
 		if (frm.doc.set_lb){
-			cur_frm.cscript.set_box_uom(frm, "IN");
-			cur_frm.cscript.set_item_weight_uom("LB");
-			cur_frm.set_value("set_kg", 0);
-			cur_frm.cscript.set_gross_wt_uom(frm, "LB");
-			// cur_frm.cscript.change_grid_labels("Unit Weight (LB)")
+			cur_frm.events.init_weight_uom_change_process(frm, "LB", "IN", "set_kg");
 		}
+	},
+	onload:function(frm){
+		cur_frm.cscript.set_weight_uom_formatter();
+	},
+	init_weight_uom_change_process:function(frm, wt_uom, pkg_uom, field){
+		cur_frm.cscript.set_box_uom(frm, pkg_uom);
+		cur_frm.cscript.set_item_weight_uom(wt_uom);
+		cur_frm.set_value(field, 0);
+		cur_frm.cscript.set_gross_wt_uom(frm, wt_uom);
+		cur_frm.refresh_field("items");
 	}
 });
 
@@ -330,12 +337,22 @@ cur_frm.cscript.set_gross_wt_uom = function(frm, uom){
 	refresh_many(['net_weight_uom', 'gross_weight_uom']);
 }
 
-// cur_frm.cscript.change_grid_labels = function(label){
-// 	var df = frappe.meta.get_docfield("Packing Slip Item", "net_weight")
-// 	if(df) df.label = label;
-// 	refresh_field("net_weight", cur_frm.doc.name, "items");
-// }
+cur_frm.cscript.change_grid_labels = function(label, wt_uom){
+	var df = frappe.meta.get_docfield("Packing Slip Item", "net_weight", cur_frm.doc.name);
+	if(df) df.label = label;
+	cur_frm.refresh_fields();
+}
 
 frappe.ui.form.on("Packing Slip Item", "total_weight", function(frm, cdt, cdn){
 	cur_frm.cscript.calculate_total_pkg_wt(frm);
 })
+
+cur_frm.cscript.set_weight_uom_formatter = function(){
+	$.each(["net_weight", "total_weight"], function(i, field){
+		var df = frappe.meta.get_docfield("Packing Slip Item", field, cur_frm.doc.name);
+		df.formatter = function(value, df, options, doc) {
+			var uom = doc.weight_uom ? doc.weight_uom : ""
+			return frappe.form.formatters._right( (value==null || value==="") ? "" : value + "  " + uom , options)
+		}
+	});
+}

@@ -214,5 +214,7 @@ def validate_for_email_notification(doc):
 		if not any([row.shipment, row.delivery, row.tendered, row.exception]):
 			frappe.throw(_("Please check any one notification type \
 							in FedEx Notification table in row {0}".format(row.idx)))
+		if row.notify_to in ["Other-1", "Other-2", "Other-3"] and not row.email_id:
+			frappe.throw(_("For FedEx Notification table, Please enter email id in row {0}.".format(row.idx)))
 
 

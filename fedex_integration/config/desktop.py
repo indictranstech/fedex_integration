@@ -6,8 +6,8 @@ def get_data():
 	return [
 		{
 			"module_name": "fedex_integration",
-			"color": "grey",
-			"icon": "octicon octicon-file-directory",
+			"color": "#1ABC9C",
+			"icon": "octicon octicon-rocket",
 			"type": "module",
 			"label": _("Freight Management")
 		}
