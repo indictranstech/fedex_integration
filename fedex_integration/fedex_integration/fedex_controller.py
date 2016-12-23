@@ -53,11 +53,11 @@ class FedexController():
 		shipment.RequestedShipment.PackagingType = doc.packaging_type
 		shipment.RequestedShipment.ShippingChargesPayment.PaymentType = doc.shipping_payment_by
 		shipment.RequestedShipment.ShippingChargesPayment.Payor.ResponsibleParty.AccountNumber = \
-		    self.config_obj.account_number if doc.shipping_payment_by == "SENDER" else doc.shipping_payment_Account
+		    self.config_obj.account_number if doc.shipping_payment_by == "SENDER" else doc.shipping_payment_account
 
 		shipment.RequestedShipment.CustomsClearanceDetail.DutiesPayment.PaymentType = doc.duties_payment_by
 		shipment.RequestedShipment.CustomsClearanceDetail.DutiesPayment.Payor.ResponsibleParty.AccountNumber = \
-			self.config_obj.account_number if doc.duties_payment_by == "SENDER" else doc.duties_payment_Account
+			self.config_obj.account_number if doc.duties_payment_by == "SENDER" else doc.duties_payment_account
 		return shipment	
 	
 	
