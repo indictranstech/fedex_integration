@@ -5,8 +5,11 @@ Commands to install app -
 ```
 $ bench get-app fedex_integration https://github.com/indictranstech/fedex_integration.git
 $ bench install-app fedex_integration
+$ bench migrate
 
 ```
+Note - Due to some issues, Custom fields are not populating in correct order.So try bench migrate command multiple times (4 times). Also, It would be better to create new site & install the app it rather using production site.
+
 
 This integration allows you to use Fedex web services to ship packages using ERPNext Packing Slip.
 
@@ -37,14 +40,17 @@ Ideally FedEX provides csv files for postal codes where delivery is allowed. You
 7. You can Schedule Pickup for submiited Packing Slip. 
 
 
-
-Note - FedEx integration is done as per customer requirements.So,we have done some minor changes to to be used by other ERPNext community members.It may affect current Packing Slip functionality.
-
 Currently we have only tested & allowed 3 FedEx Service-types which are mainly used for domestic shipping.
 
 1. Standard Overnight
 2. Priority Overnight
 3. FedEx Economy (FedEX Express Saver) 
+
+
+
+
+Note - FedEx integration is done as per customer requirements.So,we have done some minor changes to to be used by other ERPNext community members.It may affect current Packing Slip functionality.
+
 
 #### License
 

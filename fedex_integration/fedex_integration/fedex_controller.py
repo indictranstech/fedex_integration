@@ -30,7 +30,7 @@ class FedexController():
 								password= client.get_password("Shipment Forwarder", fedex_account, "password"),
 								account_number= settings.get("account_no"),
 								meter_number= settings.get("fedex_meter_no"),
-								freight_account_number= "510087020",
+								freight_account_number= settings.get("account_no"),
 								use_test_server=True if settings.get("is_test_account") else False)
 
 	def init_shipment(self, doc):
