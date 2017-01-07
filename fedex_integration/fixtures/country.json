@@ -1,15 +1,5 @@
 [
  {
-  "code": null, 
-  "country_name": "USA", 
-  "date_format": null, 
-  "docstatus": 0, 
-  "doctype": "Country", 
-  "modified": "2016-11-22 17:19:28.180973", 
-  "name": "USA", 
-  "time_zones": null
- }, 
- {
   "code": "US", 
   "country_name": "United States", 
   "date_format": "mm-dd-yyyy", 

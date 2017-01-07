@@ -67,7 +67,7 @@ app_include_js = "/assets/js/fedex.min.js"
 # ---------------
 # Hook on document methods and events
 
-fixtures = ["Country", "Property Setter", "Custom Field", "FedEx Package", "UOM"]
+fixtures = ["Country", "Property Setter", "Custom Field", "FedEx Package", "UOM", "Custom Script"]
 
 doc_events = {
 	"Packing Slip":{
