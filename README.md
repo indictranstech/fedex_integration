@@ -8,7 +8,7 @@ $ bench install-app fedex_integration
 $ bench migrate
 
 ```
-Note - Due to some issues, Custom fields are not populating in correct order.So try bench migrate command multiple times (4 times). Also, It would be better to create new site & install the app it rather using production site.
+Note - Due to some issues, Custom fields are not populating in correct order.So try bench migrate command multiple times (4 times). Also, It would be better to create new site & install the app in it rather using production site.
 
 
 This integration allows you to use Fedex web services to ship packages using ERPNext Packing Slip.
